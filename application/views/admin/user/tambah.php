@@ -48,7 +48,7 @@
 
                       <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Telphon</label>
+                            <label class="col-sm-3 col-form-label">Telepon</label>
                             <div class="col-sm-9">
                               <input type="text" name="telp" value="<?php echo set_value('telp')?>" class="form-control" placeholder="Nomor Telphon User" />
                             </div>
@@ -119,7 +119,7 @@
 
                       <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Telephon</label>
+                            <label class="col-sm-3 col-form-label">Telepon</label>
                             <div class="col-sm-9">
                               <input type="text" name="telp_rumah_sakit"  class="form-control" value="<?php echo set_value('telp_rumah_sakit')?>" placeholder="Telephon Rumah Sakit" />
                             </div>

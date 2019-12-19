@@ -5,7 +5,8 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <!-- <img src="<?php echo $this->session->userdata('asset/upload/image/thumbs/'.$user->photo) ?>" alt=""> -->
+                   <img src="<?php echo base_url('asset/upload/image/'.$this->session->userdata('photo')) ?>" />
+
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>

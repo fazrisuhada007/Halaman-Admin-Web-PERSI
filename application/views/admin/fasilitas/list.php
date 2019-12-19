@@ -6,10 +6,9 @@
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
                       <div class="row">
-                        <div class="col-md-2">
+                        <div>
                             <a class="nav-link" href="<?=base_url('admin/fasilitas/tambah') ?>">
-                        <button type="button" class="btn btn-gradient-primary mr-2">
-                        <!-- <i class="mdi mdi-plus  btn-icon-prepend"></i> -->Add </button>
+                        <button type="button" class="btn btn-gradient-primary mr-2">Add </button>
                       </a>
                         </div>
                     </div>

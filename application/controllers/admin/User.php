@@ -71,6 +71,7 @@ class User extends CI_Controller
 			$this->load->library('upload', $config);
 			
 			if ( ! $this->upload->do_upload('photo')){	
+			// if ( ! $this->upload->do_upload('photo_rumah_sakit')) {
 		//End validasi
 
 		$data = array ('title'	       => 'Tambah User',
@@ -106,7 +107,7 @@ class User extends CI_Controller
 			// Input data ke dalam 2 tabel
 			$data = array(
 			  	  'id_user'        => $i->post('id_user'),
-			  	  // 'id_rumah_sakit' => $i->post('id_rumah_sakit'),
+			  	  'id_rumah_sakit' => $i->post('id_rumah_sakit'),
 			      'nama_lengkap'=> $i->post('nama_lengkap'),
 			      'email'		=> $i->post('email'),
 			      'password'	=> MD5($i->post('password')),
@@ -114,22 +115,20 @@ class User extends CI_Controller
 			      'level'		=> $i->post('level'),
 			      'id_provinsi' => $i->post('id_provinsi'),
 			      // nama file photo
-			      'photo'			=> $upload_photo['upload_data']['file_name'],
+			      'photo'	    => $upload_photo['upload_data']['file_name'],
 			      );
 			$data2 = array(			      
 			      'id_rumah_sakit'	    => $i->post('id_rumah_sakit'),
-			      'id_user'		        => $i->post('id_user'),
 			      'nama_rumah_sakit'    => $i->post('nama_rumah_sakit'),
 			      'alamat_rumah_sakit'	=> $i->post('alamat_rumah_sakit'),
 			      'telp_rumah_sakit'	=> $i->post('telp_rumah_sakit'),
 			      'photo_rumah_sakit'	=> $upload_photo2['upload_data2']['file_name'],
 			      'status_buka'         => $i->post('status_buka'),
-			      // 'id_provinsi'         => $i->post('id_provinsi'),
 			      );
-			$tambah_user=$this->user_model->tambah_user($data);
-			if ($tambah_user) {
-				$data2['id_user'] = $this->db->insert_id();
-				$tambah_anggota_rumah_sakit= $this->user_model->tambah_anggota_rumah_sakit($data2);
+			$tambah_anggota_rumah_sakit=$this->user_model->tambah_anggota_rumah_sakit($data2);
+			if ($tambah_anggota_rumah_sakit) {
+				$data['id_rumah_sakit'] = $this->db->insert_id();
+				$tambah_user= $this->user_model->tambah_user($data);
 			}
 			$this->session->set_flashdata('suskes, Data telah ditambah');
 			redirect(base_url('admin/user'),'refresh');
@@ -143,15 +142,15 @@ class User extends CI_Controller
 	}
 
 	//EDIT user
-	public function edit($id_user)
+	public function edit($id_rumah_sakit)
 	{
 		//Ambil data rovinsi
 		$provinsi = $this->provinsi_model->listing();
 
 		//Ambil data user yang akan diedit
-		$user   = $this->user_model->detail($id_user);
+		$user   = $this->user_model->detail($id_rumah_sakit);
 
-		$anggota_rumah_sakit   = $this->user_model->detail2($id_user);
+		$anggota_rumah_sakit   = $this->user_model->detail2($id_rumah_sakit);
 		//VALIDASI edit
 		$valid = $this->form_validation;
 
@@ -222,18 +221,18 @@ class User extends CI_Controller
 			//end create thumbnail
 			$i = $this->input;
 			$data1 = array(
-			 // 'id_user'	     => $id_user,
-			  'nama_lengkap' => $i->post('nama_lengkap'),
-		      'email'		 => $i->post('email'),
-		      'telp'		 => $i->post('telp'),
-		      'id_provinsi'	 => $i->post('id_provinsi'),
+			  'id_user'       => $id_user,
+			  'id_rumah_sakit'=> $id_rumah_sakit,
+			  'nama_lengkap'  => $i->post('nama_lengkap'),
+		      'email'		  => $i->post('email'),
+		      'telp'		  => $i->post('telp'),
+		      'id_provinsi'	  => $i->post('id_provinsi'),
 		      //Disimpan nama file photo
-		      'photo'		 => $upload_photo['upload_data']['file_name']
+		      'photo'		  => $upload_photo['upload_data']['file_name']
 			      );
 
 			$data2 = array(
-			  // 'id_rumah_sakit'	    => $id_rumah_sakit,
-		      // 'id_user'		        => $id_user,
+			  'id_rumah_sakit'	    => $id_rumah_sakit,
 		      'nama_rumah_sakit'    => $i->post('nama_rumah_sakit'),
 		      'alamat_rumah_sakit'	=> $i->post('alamat_rumah_sakit'),
 		      'telp_rumah_sakit'	=> $i->post('telp_rumah_sakit'),
@@ -253,7 +252,7 @@ class User extends CI_Controller
 			//Edit user tanpa ganti photo
 			$i = $this->input;
 			$data1 = array(
-			  // 'id_user'	        => $id_user,
+			  'id_rumah_sakit'  => $id_rumah_sakit,
 			  'nama_lengkap'    => $i->post('nama_lengkap'), 
 			  'email'			=> $i->post('email'),
 			  'telp'			=> $i->post('telp'),
@@ -262,8 +261,7 @@ class User extends CI_Controller
 			      );
 
 			$data2 = array(
-			  // 'id_rumah_sakit'	    => $id_rumah_sakit,
-		      // 'id_user'		        => $id_user,
+			  'id_rumah_sakit'	    => $id_rumah_sakit,
 		      'nama_rumah_sakit'    => $i->post('nama_rumah_sakit'),
 		      'alamat_rumah_sakit'	=> $i->post('alamat_rumah_sakit'),
 		      'telp_rumah_sakit'	=> $i->post('telp_rumah_sakit'),
@@ -273,11 +271,11 @@ class User extends CI_Controller
 		      //Disimpan nama file photo
 			      );
 			
-			$edit_user=$this->user_model->edit_user($data1,$id_user);
+			$edit_user=$this->user_model->edit_user($data1,$id_rumah_sakit);
 			
 			if ($edit_user) {
-				// $data2['id_user'] = $this->db->insert_id();
-				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_user);
+				// $data2['id_rumah_sakit'] = $this->db->insert_id();
+				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_rumah_sakit);
 			}
 			$this->session->set_flashdata('suskes, Data telah diedit');
 			redirect(base_url('admin/user'),'refresh');
@@ -294,14 +292,14 @@ class User extends CI_Controller
 	}
 
 		//DELETE user
-		public function delete($id_user)
+		public function delete($id_rumah_sakit)
 		{
 			//Proses hapus gambar
-			$user = $this->user_model->detail($id_user);
+			$user = $this->user_model->detail($id_rumah_sakit);
 			unlink('./asset/upload/image/'.$user->photo);
 			unlink('./asset/upload/image/thumbs/'.$user->photo);
 			//End proses hapus
-			$data = array('id_user' => $id_user);
+			$data = array('id_rumah_sakit' => $id_rumah_sakit);
 			$this->user_model->delete($data);
 			$this->user_model->delete_anggota($data);
 			$this->session->set_flashdata('Sukses, Data telah dihapus');

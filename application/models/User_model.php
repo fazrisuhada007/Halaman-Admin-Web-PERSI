@@ -24,11 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		// join tabel user dengan provinsi
 		public function listing()
 		{
-			$this->db->select('user.*,  
-						   provinsi.nama_provinsi');
+			$this->db->select('user.* ,provinsi.nama_provinsi, anggota_rumah_sakit.nama_rumah_sakit, anggota_rumah_sakit.alamat_rumah_sakit');
+
 			$this->db->from('user');
 			//Join
 			$this->db->join('provinsi', 'provinsi.id_provinsi = user.id_provinsi', 'left');
+			//Join
+			$this->db->join('anggota_rumah_sakit', 'anggota_rumah_sakit.id_rumah_sakit = user.id_rumah_sakit', 'left');
 			//End join
 			$this->db->order_by('id_provinsi', 'desc');
 			$query = $this->db->get();
@@ -36,22 +38,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		//Menampilkan detail user
-		public function detail($id_user)
+		public function detail($id_rumah_sakit)
 		{
 			$this->db->select('*');
 			$this->db->from('user');
-			$this->db->where('id_user', $id_user);
-			$this->db->order_by('id_user', 'desc');
+			$this->db->where('id_rumah_sakit', $id_rumah_sakit);
+			$this->db->order_by('id_rumah_sakit', 'desc');
 			$query = $this->db->get();
 			return $query->row();
 		}
 
-		//Menampilkan detail user
-		public function detail2($id_user)
+		//Menampilkan detail rumah sakit
+		public function detail2($id_rumah_sakit)
 		{
 			$this->db->select('*');
 			$this->db->from('anggota_rumah_sakit');
-			$this->db->where('id_user', $id_user);
+			$this->db->where('id_rumah_sakit', $id_rumah_sakit);
 			$this->db->order_by('id_rumah_sakit', 'desc');
 			$query = $this->db->get();
 			return $query->row();
@@ -71,15 +73,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		// PERINTAH EDIT DATA user
-		public function edit_user($data,$id_user)
+		public function edit_user($data,$id_rumah_sakit)
 		{
-			$this->db->where('id_user', $id_user);
+			$this->db->where('id_rumah_sakit', $id_rumah_sakit);
 			return $this->db->update('user', $data);
 		
 		}
-		public function edit_anggota_rumah_sakit($data,$id_user)
+		public function edit_anggota_rumah_sakit($data,$id_rumah_sakit)
 		{
-			$this->db->where('id_user', $id_user);
+			$this->db->where('id_rumah_sakit', $id_rumah_sakit);
 			return $this->db->update('anggota_rumah_sakit', $data);
 			
 			

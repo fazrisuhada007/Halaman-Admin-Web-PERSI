@@ -18,13 +18,15 @@ class Simple_login
 		$check = $this->CI->user_model->login($email,$password);
 		//Jika ada data user, maka create session login
 		if($check) {
-			$id_user 	  = $check->id_user;
-			$email		  = $check->email;
-			$nama_lengkap = $check->nama_lengkap;
-			$level		  = $check->level;
-			$photo		  = $check->photo;
+			$id_user 	    = $check->id_user;
+			$id_rumah_sakit	= $check->id_rumah_sakit;
+			$email		    = $check->email;
+			$nama_lengkap   = $check->nama_lengkap;
+			$level		    = $check->level;
+			$photo		    = $check->photo;
 			//Craete session
 			$this->CI->session->set_userdata('id_user', $id_user);
+			$this->CI->session->set_userdata('id_rumah_sakit', $id_rumah_sakit);
 			$this->CI->session->set_userdata('email', $email);
 			$this->CI->session->set_userdata('nama_lengkap', $nama_lengkap);
 			$this->CI->session->set_userdata('level', $level);
@@ -53,6 +55,7 @@ class Simple_login
 	{
 		//MEMBUANG SEMUA SESSION YANG TELAH DI SET SAAT LOGIN
 		$this->CI->session->unset_userdata('id_user');
+		$this->CI->session->unset_userdata('id_rumah_sakit');
 		$this->CI->session->unset_userdata('email');
 		$this->CI->session->unset_userdata('nama_lengkap');
 		$this->CI->session->unset_userdata('level');
