@@ -130,7 +130,7 @@ class User extends CI_Controller
 				$data['id_rumah_sakit'] = $this->db->insert_id();
 				$tambah_user= $this->user_model->tambah_user($data);
 			}
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes', 'Data telah ditambah');
 			redirect(base_url('admin/user'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -277,7 +277,7 @@ class User extends CI_Controller
 				// $data2['id_rumah_sakit'] = $this->db->insert_id();
 				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_rumah_sakit);
 			}
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes', 'Data telah diedit');
 			redirect(base_url('admin/user'),'refresh');
 		}}
 		// END MASUK DATABASE

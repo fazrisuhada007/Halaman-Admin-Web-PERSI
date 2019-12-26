@@ -58,7 +58,7 @@ class Pelayanan_penunjang extends CI_Controller
 		{
 			$data = array('id_pelayanan_penunjang' => $id_pelayanan_penunjang);
 			$this->pelayanan_penunjang_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('Sukses', 'Data telah dihapus');
 			redirect(base_url('admin/pelayanan_penunjang'),'refresh');
 		}
 
@@ -87,7 +87,7 @@ class Pelayanan_penunjang extends CI_Controller
 						  'nama_pelayanan_penunjang' 	=> $i->post('nama_pelayanan_penunjang')
 					      );
 			$this->pelayanan_penunjang_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes', 'Data telah diedit');
 			redirect(base_url('admin/pelayanan_penunjang'),'refresh');
 		}
 		// END MASUK DATABASE

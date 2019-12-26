@@ -83,7 +83,7 @@ class Berita extends CI_Controller
 			      'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes','Data telah ditambah');
 			redirect(base_url('admin/berita'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -158,7 +158,7 @@ class Berita extends CI_Controller
 			  'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes','Data telah diedit');
 			redirect(base_url('admin/berita'),'refresh');
 		}} else {
 			//Edit berita tanpa ganti photo
@@ -171,7 +171,7 @@ class Berita extends CI_Controller
 			  'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes','Data telah diedit');
 			redirect(base_url('admin/berita'),'refresh');
 		}}
 		// END MASUK DATABASE

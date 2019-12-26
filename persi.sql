@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Des 2019 pada 06.36
+-- Generation Time: 26 Des 2019 pada 10.48
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -30,27 +30,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `anggota_rumah_sakit` (
   `id_rumah_sakit` int(11) NOT NULL,
-  `kode_user` varchar(70) NOT NULL,
   `nama_rumah_sakit` varchar(70) NOT NULL,
   `alamat_rumah_sakit` varchar(70) NOT NULL,
   `telp_rumah_sakit` varchar(20) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `status_buka` varchar(20) NOT NULL,
-  `id_provinsi` varchar(70) NOT NULL,
-  `id_fasilitas` varchar(70) NOT NULL,
-  `id_pelayanan_medis` varchar(70) NOT NULL,
-  `id_pelayanan_penunjang` varchar(70) NOT NULL
+  `photo_rumah_sakit` varchar(255) NOT NULL,
+  `status_buka` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `anggota_rumah_sakit`
 --
 
-INSERT INTO `anggota_rumah_sakit` (`id_rumah_sakit`, `kode_user`, `nama_rumah_sakit`, `alamat_rumah_sakit`, `telp_rumah_sakit`, `photo`, `status_buka`, `id_provinsi`, `id_fasilitas`, `id_pelayanan_medis`, `id_pelayanan_penunjang`) VALUES
-(1, 'U1', 'Permata Bunda', 'Jl.kebangsaan Timur, Jakarta', '087777', '', '24 Jam', '1', '2', '1', '2'),
-(2, 'U2', 'Ahmad Yani', 'Bandung', '089999', '', '24 Jam', '2', '3', '2', '2'),
-(3, 'U1', 'Yarsi', 'Simpang Empat', '0819203040', '', '24 Jam', '2', '4', '1', '2'),
-(4, 'U2', 'Bintaro', 'Simpang Tiga', '0823456781', '', '24 Jam', '1', '2', '2', '2');
+INSERT INTO `anggota_rumah_sakit` (`id_rumah_sakit`, `nama_rumah_sakit`, `alamat_rumah_sakit`, `telp_rumah_sakit`, `photo_rumah_sakit`, `status_buka`) VALUES
+(1, 'Rumah sakit Permata', 'Jln.Dipenegoro, no.22', '0877-1234', 'face21.jpg', '24 Jam'),
+(5, 'Rumah Sakit Umum Daerah Siti Fatimah', 'Jln.Soedirman, no.25', '0877-9000', 'face1.jpg', '24 Jam'),
+(29, 'Rumah Sakit Ibnu sina', 'Jln.Ahmad Yani, no.10', '0877-1234', 'face24.jpg', '24 Jam');
 
 -- --------------------------------------------------------
 
@@ -60,7 +54,6 @@ INSERT INTO `anggota_rumah_sakit` (`id_rumah_sakit`, `kode_user`, `nama_rumah_sa
 
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL,
-  `kode_berita` varchar(70) NOT NULL,
   `judul_berita` varchar(255) NOT NULL,
   `isi` text NOT NULL,
   `photo` varchar(255) NOT NULL,
@@ -71,13 +64,11 @@ CREATE TABLE `berita` (
 -- Dumping data untuk tabel `berita`
 --
 
-INSERT INTO `berita` (`id_berita`, `kode_berita`, `judul_berita`, `isi`, `photo`, `tanggal_update`) VALUES
-(2, 'B01', 'Tunggakan Pembayaran BPJS Kesehatan Kota Kendari Capai 46,7 Miliar', 'Jakarta - Kendari - Tunggakan pembayaran iuran BPJS Kesehatan untuk Kota Kendari mencapai Rp 46,7 miliar. Hal tersebut diungkapkan Humas BPJS Kesehatan Kota Kendari, Novriawan.\r\n\r\n\"Tunggakannya hingga saat ini mencapai 46,7 miliar dari jumlah peserta 73.415 jiwa,\" jelasnya, Selasa (12/11/2019).\r\n\r\nLebih lanjut dikatakannya bahwa tunggakan tersebut terjadi sejak Oktober 2019 lalu hingga saat ini. Meskipun demikian, pihak BPJS terus memberikan pelayanan bagi seluruh pengguna BPJS Kesehatan. Pihaknya juga tetap mengimbau kepada seluruh warga agar segera melunasi tunggakan pembayarannya.', '', '2019-11-19 17:13:01'),
-(8, 'B02', 'Pelayanan Rumah Sakit', 'rizki@gmail.com', 'Jakarta - Kendari - Tunggakan pembayaran iuran BPJS Kesehatan untuk Kota Kendari mencapai Rp 46,7 miliar. Hal tersebut diungkapkan Humas BPJS Kesehatan Kota Kendari, Novriawan.\\r\\n\\r\\n\\\"Tunggakannya hingga saat ini mencapai 46,7 miliar dari jumlah peserta', '2019-11-25 11:13:01'),
-(13, 'B03', '4 Komplikasi yang BIsa Terjadi Akibat Hipertensi ', 'Hipertensi kerap dikataan sebagai \"silent killer\". Hal ini terjadi karena biasanya penyakit ini jarang menunjukkan gejala pada penderitanya. Terlambat mengetahui masalah hipertensi pada tubuh Anda bisa berakibat fatal untuk keselamatan Anda. Berikut beberapa komplikasi yang timbul akibat penyakit hipertensi.', '1574864671.jpg', '2019-12-03 10:10:49'),
-(14, 'forum1', '4 Komplikasi yang BIsa Terjadi Akibat Hipertensi ', 'Stroke akibat hipertensi\nTekanan darah yang tinggi dapat mengakibatkan pecahnya pembuluh darah di otak yang dapat menyebabkan serangan stroke. Biasanya kasus ini terjadi secara mendadak dan menyebabkan kerusakan otak dalam beberapa menit.', '15748646711.jpg', '2019-12-03 10:53:58'),
-(15, 'B03', '4 Komplikasi yang BIsa Terjadi Akibat Hipertensi ', 'Hipertensi kerap dikataan sebagai \"silent killer\". Hal ini terjadi karena biasanya penyakit ini jarang menunjukkan gejala pada penderitanya. Terlambat mengetahui masalah hipertensi pada tubuh Anda bisa berakibat fatal untuk keselamatan Anda. Berikut beberapa komplikasi yang timbul akibat penyakit hipertensi.', '15748646714.jpg', '2019-12-03 11:00:59'),
-(16, 'B03', '4 Komplikasi yang BIsa Terjadi Akibat Hipertensi ', 'Hipertensi kerap dikataan sebagai \"silent killer\". Hal ini terjadi karena biasanya penyakit ini jarang menunjukkan gejala pada penderitanya. Terlambat mengetahui masalah hipertensi pada tubuh Anda bisa berakibat fatal untuk keselamatan Anda. Berikut beberapa komplikasi yang timbul akibat penyakit hipertensi.', '157486467110.jpg', '2019-12-03 11:07:43');
+INSERT INTO `berita` (`id_berita`, `judul_berita`, `isi`, `photo`, `tanggal_update`) VALUES
+(22, 'Grab Rilis Layanan Kesehatan, Gandeng Good Doctor Technology', '<p><strong>Jakarta</strong> - Setelah hadir dalam aplikasinya, Grab Indonesia mengumumkan secara resmi layanan kesehatan untuk masyarakat di Indonesia bernama <a href=\"https://www.detik.com/tag/grabhealth/\">GrabHealth</a>. Grab menggandeng Good Doctor Technology untuk menyediakan beberapa layanan kesehatan dalam aplikasinya.<br />\r\n<br />\r\nPresiden Direktur <a href=\"https://www.detik.com/tag/grab/\">Grab</a> Indonesia Ridzki Kramadibrata mengatakan, kehadiran GrabHealth ini seirama dengan budaya Grab yakni &#39;Grab For Good&#39;. Dengan kesamaan visi inilah maka keduanya berkolaborasi lewat teknologi, khususnya dalam hal akses kesehatan melalui platform digital.<br />\r\n<br />\r\n&quot;Secara tidak kebetulan, Grab memiliki misi yaitu Grab For Good, teknologi yang diluncurkan untuk hal baik yang positif kepada masyarakat. Itu adalah komitmen kita kepada masyarakat Indonesia bahkan kepada masyarakat di Asia Tenggara. Karena teknologi itu memang dibuat untuk memberikan hal yang baik, memberikan kemajuan kepada masyarakat. Hari ini kita buktikan bahwa sekali lagi Grab meluncurkan sesuatu yang membawa kebaikan untuk masyarakat,&quot; kata Ridzki dalam peluncuran GrabHealth di Museum Kebangkitan Nasional, Jakarta, Selasa (10/12/2019).</p>\r\n', 'grab.jpeg', '2019-12-13 10:33:36'),
+(23, 'Konsumsi Gula Berlebih Kurangi Jumlah Bakteri Baik di Pencernaan', '<p><strong>JAKARTA</strong> - Di balik rasanya yang manis, konsumsi gula berlebih tidak hanya menyebabkan penyakit diabetes dan obesitas tapi juga dapat mengurangi jumlah bakteri baik dalam pencernaan. Sayangnya, hingga saat ini masih banyak masyarakat yang belum sadar akan pengaruh dari konsumsi gula berlebihan.<br />\r\n<br />\r\n&ldquo;Saat ini masih belum banyak orang yang sadar akan pengaruh gula yang berlebih kepada kesehatan pencernaan. Kita harus mengedukasi masyarakat terkait hal ini,&rdquo; ujar Dokter Spesialis Gizi Klinik, Marya Haryono melalui keterangan pers yang diterima SINDOnews.<br />\r\n<br />\r\nPenelitian dari Oregon State University di Amerika Serikat pada tahun 2013 menunjukkan, bakteri jahat di dalam usus akan berkembang biak dengan pesat apabila terus menerus diberi asupan gula. Kondisi ini akan mengancam bakteri baik di dalam usus sehingga menganggu kinerjanya menjaga kesehatan pencernaan.</p>\r\n', 'gambar2.jpg', '2019-12-13 10:35:21'),
+(24, 'BPJS Kesehatan Telat Bayar Tagihan, RSUD di Jakarta Krisis Obat', '<p><strong>TEMPO.CO</strong>, <strong>Jakarta</strong> - Para direktur rumah sakit umum daerah (RUSD) di Jakarta mengeluhkan tagihan biaya pelayanan kesehatan yang tak kunjung dibayar oleh Badan Penyelenggara Jaminan Sosial atau <a href=\"https://bisnis.tempo.co/read/1123167/bpjs-kesehatan-tekan-defisit-keuangan-lewat-sistem-rujukan-online\">BPJS Kesehatan</a>. Dampaknya, seluruh rumah sakit umum terancam kehabisan stok obat untuk pasien.</p>\r\n\r\n<p>Pemerintah DKI Jakarta pun cemas. Menurut Sekretaris Daerah DKI Jakarta, Saefullah, sejak beberapa pekan terakhir sejumlah rumah sakit sudah tak bisa lagi belanja obat-obatan gara-gara BPJS Kesehatan kerap terlambat mencairkan klaim tagihan.</p>\r\n\r\n<p>&quot;Padahal DKI sangat lancar menyetor kewajiban ke BPJS,&quot; kata Saefullah seperti dikutip <em>Koran Tempo</em> terbitan Rabu 12 September 2018. &nbsp;&quot;Giliran rumah sakit <em>narik</em> ke BPJS, terjadi masalah.&quot;</p>\r\n\r\n<p>Setiap tahun DKI menggelontorkan Rp 1,5 triliun untuk membayar premi BPJS Kesehatan bagi pasien kelas III. Selain ingin masyarakat DKI terlayani akses kesehatan, laporan keuangan BPJS Kesehatan menunjukkan pendapatan Rp 74,25 triliun, tapi defisit Rp 9,75 triliun.</p>\r\n\r\n<p>Masalahnya, menurut Saefullah, BPJS Kesehatan justru kerap terlambat membayar klaim yang semestinya dibayarkan setiap tiga bulan.</p>\r\n\r\n<p>DKI akhirnya mengeluarkan dana talangan untuk dialirkan ke rumah-rumah sakit yang belum dibayar oleh BPJS Kesehatan. Dana itu merupakan hasil kredit dari Bank DKI, sehingga DKI harus menanggung bunga yang membengkak akibat keterlambatan pembayaran dari BPJS.</p>\r\n\r\n<p>Kepala Humas BPJS Kesehatan, M. Iqbal Anas Ma&#39;ruf, mengakui keterlambatan pembayaran klaim dari rumah sakit. &quot;Keterlambatan pembayaran memang ada,&rdquo; ucap dia, kemarin.</p>\r\n\r\n<p>Menurut dia, keterlambatan pembayaran tersebut akibat BPJS Kesehatan kekurangan dana. Uang premi yang dibayarkan masyarakat tak cukup untuk menutupi tagihan dari rumah sakit di seluruh Indonesia. BPJS Kesehatan pun meminta anggaran dari pemerintah pusat. Tapi pengajuan anggaran ke Kementerian Keuangan belum disetujui.</p>\r\n', 'gambar3.jpg', '2019-12-13 10:38:46'),
+(25, 'RS Omni Dituduh Malpraktik ke Anaknya, Juliana Gugat Rp 20 Miliar', '<p>Berbekal bukti keterangan dari Rumah Sakit Australia, Juliana membuka babak baru kasus dugaan malpraktek dua anaknya setelah 10 tahun mandek.</p>\r\n\r\n<p>Juliana melayangkan gugatan secara perdata ke Pengadilan Negeri Tangerang dan saat ini sedang dalam proses persidangan. Dalam persidangan yang berlangsung hari ini, ketua majelis hakim Gatot Sarwadi menerima materi kesimpulan dari penggugat dan tergugat.</p>\r\n\r\n<p>&quot;Kesimpulan kami terima dan nanti akan kami putuskan dua pekan mendatang,&quot; kata Gatot sambil menutup sidang.</p>\r\n\r\n<p>Menanggapi gugatan ini, kuasa hukum RS Omni Alam Sutera Harry F.M Sitorus menilai tuntutan Juliana itu tidak relevan.</p>\r\n\r\n<p>&quot;Gak relevan, tuntutan atas dugaan malapraktek, sementara malprakteknya tidak bisa dibuktikan. Dasar permintaan kerugiannya apa karena dugaan itu tidak terbukti,&quot; kata Harry.</p>\r\n', 'gambar4.jpg', '2019-12-13 10:41:54');
 
 -- --------------------------------------------------------
 
@@ -97,8 +88,9 @@ CREATE TABLE `fasilitas` (
 
 INSERT INTO `fasilitas` (`id_fasilitas`, `kode_fasilitas`, `nama_fasilitas`) VALUES
 (2, 'A02', 'Unit Gawat Darurat'),
-(3, 'A03', 'IGD'),
-(4, 'A01', 'IGD');
+(3, 'A03', 'Instansi Gawat Darurat'),
+(4, 'A01', 'Ambulance'),
+(6, 'f', 'Medical Check Up');
 
 -- --------------------------------------------------------
 
@@ -108,9 +100,10 @@ INSERT INTO `fasilitas` (`id_fasilitas`, `kode_fasilitas`, `nama_fasilitas`) VAL
 
 CREATE TABLE `forum` (
   `id_forum` int(11) NOT NULL,
-  `kompartemen` text NOT NULL,
-  `judul_kompartemen` varchar(255) NOT NULL,
-  `photo` text NOT NULL,
+  `id_rumah_sakit` int(11) NOT NULL,
+  `id_kompartemen` int(11) NOT NULL,
+  `judul_forum` varchar(255) NOT NULL,
+  `photo_forum` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
   `tanggal_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -119,11 +112,9 @@ CREATE TABLE `forum` (
 -- Dumping data untuk tabel `forum`
 --
 
-INSERT INTO `forum` (`id_forum`, `kompartemen`, `judul_kompartemen`, `photo`, `deskripsi`, `tanggal_update`) VALUES
-(7, 'Kompartemen HTA(Healthy Technology Assessment)', 'Sistem Informasi Kesehatan Rumah Sakit', '157486467111.jpg', 'Pentingnya peran teknologi dalam rumah sakit', '2019-12-03 11:16:09'),
-(8, 'coba1', 'coba1', 'coba1', 'coba1', '2019-12-05 15:55:18'),
-(9, 'coba2', 'coba2', 'coba2', 'coba2', '2019-12-05 15:56:03'),
-(10, 'coba3', 'coba3', 'coba3', 'coba3', '2019-12-05 15:56:03');
+INSERT INTO `forum` (`id_forum`, `id_rumah_sakit`, `id_kompartemen`, `judul_forum`, `photo_forum`, `deskripsi`, `tanggal_update`) VALUES
+(18, 5, 5, 'Peningkatan pelayanan terhadap mutu rumah sakit', 'Hello_Kitty13.jpg', '<p>Pada zaman sekarang ini penting bagi setiap rumah sakit untuk meningkatkan mutu dari setiap pelayanannya.</p>\r\n', '2019-12-19 04:10:06'),
+(19, 5, 4, 'Kompetensi keperawatan terhadap pelayanan rumah sakit', '8963047_2016080301352201912.jpg', '<p>Pentingnya kompetensi keperawatan terhadap pelayanan rumah sakit dan cara mewujudkannya adalah</p>\r\n', '2019-12-26 10:13:51');
 
 -- --------------------------------------------------------
 
@@ -134,8 +125,8 @@ INSERT INTO `forum` (`id_forum`, `kompartemen`, `judul_kompartemen`, `photo`, `d
 CREATE TABLE `komentar` (
   `id_komentar` int(11) NOT NULL,
   `id_forum` int(11) NOT NULL,
-  `kompartemen` text NOT NULL,
-  `nama_rumah_sakit` text NOT NULL,
+  `id_rumah_sakit` int(11) NOT NULL,
+  `id_kompartemen` int(11) NOT NULL,
   `komentar` text NOT NULL,
   `tanggal_update` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -144,9 +135,13 @@ CREATE TABLE `komentar` (
 -- Dumping data untuk tabel `komentar`
 --
 
-INSERT INTO `komentar` (`id_komentar`, `id_forum`, `kompartemen`, `nama_rumah_sakit`, `komentar`, `tanggal_update`) VALUES
-(1, 7, 'Kompartemen Manajemen Mutu', 'Rumah Sakit Ibu dan Anak Aceh', 'bagaimana cara meningkatkan mutu pelayanan terhadap pasien?', '2019-12-04 11:22:21'),
-(2, 7, 'Kompartemen Manajemen Mutu', 'Rumah Sakit Yarsi', 'Terapkan SOP sesuai Prosedur', '2019-12-04 06:47:10');
+INSERT INTO `komentar` (`id_komentar`, `id_forum`, `id_rumah_sakit`, `id_kompartemen`, `komentar`, `tanggal_update`) VALUES
+(1, 18, 5, 5, 'bagaimana cara meningkatkan mutu pelayanan terhadap pasien?', '2019-12-24 14:12:47'),
+(2, 18, 5, 5, 'Terapkan SOP sesuai Prosedur', '2019-12-24 14:12:47'),
+(5, 18, 5, 5, '5', '0000-00-00 00:00:00'),
+(7, 19, 5, 4, 'a', '0000-00-00 00:00:00'),
+(18, 19, 5, 4, '3', '0000-00-00 00:00:00'),
+(20, 19, 5, 4, '4', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -156,21 +151,23 @@ INSERT INTO `komentar` (`id_komentar`, `id_forum`, `kompartemen`, `nama_rumah_sa
 
 CREATE TABLE `kompartemen` (
   `id_kompartemen` int(11) NOT NULL,
-  `kode_kompartemen` varchar(70) NOT NULL,
   `nama_kompartemen` varchar(255) NOT NULL,
   `ketua` varchar(255) NOT NULL,
   `sekertaris` varchar(255) NOT NULL,
   `anggota` text NOT NULL,
-  `kode_forum` varchar(70) NOT NULL
+  `id_forum` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kompartemen`
 --
 
-INSERT INTO `kompartemen` (`id_kompartemen`, `kode_kompartemen`, `nama_kompartemen`, `ketua`, `sekertaris`, `anggota`, `kode_forum`) VALUES
-(1, 'K01', 'Pelayanan', 'Rahmat Rizki', 'Okta Fitri Ningsih', '1.Sisi Mailani\r\n2.Syafnita Aprilia\r\n3.Dela Azhar', 'forum1'),
-(3, 'K02', 'BPJS', 'Ashabil', 'Feni', '1.Kasmaida\r\n2.Eti \r\n3.Dina', '');
+INSERT INTO `kompartemen` (`id_kompartemen`, `nama_kompartemen`, `ketua`, `sekertaris`, `anggota`, `id_forum`) VALUES
+(4, 'Kompartemen Manajemen Keperawatan', '', '', '', ''),
+(5, 'Kompartemen  Manajemen Mutu', '', '', '', ''),
+(6, 'Kompartemen Hukum,Advokasi, dan Mediasi', '', '', '', ''),
+(7, 'Kompartemen Humas dan Pemasaran', '', '', '', ''),
+(8, 'Kompartemen Manajemen Farmasi', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -271,8 +268,29 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 (32, 'Maluku Utara'),
 (33, 'Maluku'),
 (34, 'Papua Barat'),
-(35, 'Papua'),
-(36, 'q');
+(35, 'Papua');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_anggota_rs`
+--
+
+CREATE TABLE `tbl_anggota_rs` (
+  `id_tbl` int(11) NOT NULL,
+  `id_rumah_sakit` int(11) NOT NULL,
+  `id_fasilitas` int(11) NOT NULL,
+  `id_pelayanan_medis` int(11) NOT NULL,
+  `id_pelayanan_penunjang` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_anggota_rs`
+--
+
+INSERT INTO `tbl_anggota_rs` (`id_tbl`, `id_rumah_sakit`, `id_fasilitas`, `id_pelayanan_medis`, `id_pelayanan_penunjang`) VALUES
+(1, 1, 2, 1, 2),
+(2, 1, 3, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -282,13 +300,13 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `kode_user` varchar(70) NOT NULL,
+  `id_rumah_sakit` int(11) NOT NULL,
+  `id_provinsi` int(11) NOT NULL,
   `nama_lengkap` varchar(70) NOT NULL,
   `email` varchar(70) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `kode_provinsi` varchar(70) NOT NULL,
   `telp` varchar(20) NOT NULL,
-  `level` int(1) NOT NULL COMMENT '1:Admin, 2:Anggota',
+  `level` int(11) NOT NULL COMMENT '1:Admin, 2:User',
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -296,9 +314,10 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `kode_user`, `nama_lengkap`, `email`, `password`, `kode_provinsi`, `telp`, `level`, `photo`) VALUES
-(1, 'U1', 'Deni', 'deni@gmail.com', 'deni', 'JKT', '0822-7222-2290', 2, ''),
-(2, 'U2', 'Rahmat Rizki', 'admin@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'JKT', '0823-47822-943', 1, '');
+INSERT INTO `user` (`id_user`, `id_rumah_sakit`, `id_provinsi`, `nama_lengkap`, `email`, `password`, `telp`, `level`, `photo`) VALUES
+(1, 1, 1, 'Deni', 'deni@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '0822-7222-9900', 2, 'face21.jpg'),
+(3, 5, 5, 'Rahmat Rizki', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '0819-9345-9990', 1, 'face1.jpg'),
+(38, 29, 4, 'Armanda Ary', 'armand@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '0823-4782-2943', 2, 'face24.jpg');
 
 -- --------------------------------------------------------
 
@@ -371,6 +390,12 @@ ALTER TABLE `provinsi`
   ADD PRIMARY KEY (`id_provinsi`);
 
 --
+-- Indexes for table `tbl_anggota_rs`
+--
+ALTER TABLE `tbl_anggota_rs`
+  ADD PRIMARY KEY (`id_tbl`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -384,37 +409,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `anggota_rumah_sakit`
 --
 ALTER TABLE `anggota_rumah_sakit`
-  MODIFY `id_rumah_sakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_rumah_sakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `fasilitas`
 --
 ALTER TABLE `fasilitas`
-  MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id_forum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_forum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `kompartemen`
 --
 ALTER TABLE `kompartemen`
-  MODIFY `id_kompartemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kompartemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `pelayanan_medis`
 --
 ALTER TABLE `pelayanan_medis`
-  MODIFY `id_pelayanan_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pelayanan_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `pelayanan_penunjang`
 --
@@ -424,12 +449,17 @@ ALTER TABLE `pelayanan_penunjang`
 -- AUTO_INCREMENT for table `provinsi`
 --
 ALTER TABLE `provinsi`
-  MODIFY `id_provinsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_provinsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+--
+-- AUTO_INCREMENT for table `tbl_anggota_rs`
+--
+ALTER TABLE `tbl_anggota_rs`
+  MODIFY `id_tbl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

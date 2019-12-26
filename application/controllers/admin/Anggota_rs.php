@@ -101,7 +101,7 @@ class Anggota_rs extends CI_Controller
 			      'photo'			=> $upload_photo['upload_data']['file_name'],
 			      );
 			$this->anggota_rs_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes', 'Data telah ditambah');
 			redirect(base_url('admin/anggota_rs'),'refresh');
 		}}
 		// END MASUK DATABASE

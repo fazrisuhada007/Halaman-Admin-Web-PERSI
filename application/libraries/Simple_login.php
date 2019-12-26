@@ -35,7 +35,7 @@ class Simple_login
 			redirect(base_url('admin/dashboard'),'refresh');
 		} else {
 			//Jika data tidak ditemukan(email atau password salah), maka login kembali!
-			$this->CI->session->set_flashdata('Warning', 'email atau password salah.');
+			$this->CI->session->set_flashdata('warning', 'email atau password salah.');
 			redirect(base_url('login'), 'refresh');
 		}
 	}

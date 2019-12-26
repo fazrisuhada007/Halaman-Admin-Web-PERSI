@@ -1,3 +1,13 @@
+<style type="text/css" media="screen">
+.mdi-pencil-box-outline::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+} 
+.mdi-delete::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+}   
+</style>
 
  <div class="main-panel">
           <div class="content-wrapper">
@@ -15,7 +25,7 @@
                         <label>Nama Provinsi</label>
                         <input type="text" name="nama_provinsi"  class="form-control col-md-5" placeholder="Nama Provinsi" value="<?php echo $provinsi->nama_provinsi?>">
                       </div>
-                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2">
+                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2" style="background: none;background-color: #00acee;">
                         Simpan
                       </button>
 

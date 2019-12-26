@@ -11,7 +11,7 @@ class Provinsi extends CI_Controller
 		$this->simple_login->cek_login();
 	}
 
-	// DATA USER
+	// DATA Provinsi
 	public function index()
 	{
 		$provinsi = $this->provinsi_model->listing();
@@ -24,7 +24,7 @@ class Provinsi extends CI_Controller
 		$this->load->view('admin/layout/wrapper', $data);
 	}
 
-	//TAMBAH USER
+	//TAMBAH Provinsi
 	public function tambah()
 	{
 		//VALIDASI INPUT
@@ -45,22 +45,22 @@ class Provinsi extends CI_Controller
 			$i 	  = $this->input;
 			$data = array('nama_provinsi'=> $i->post('nama_provinsi'));
 			$this->provinsi_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes','Data telah ditambah');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 		// END MASUK DATABASE
 	}
 
-		//DELETE USER
+		//DELETE Provinsi
 		public function delete($id_provinsi)
 		{
 			$data = array('id_provinsi' => $id_provinsi);
 			$this->provinsi_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('sukses','Data telah dihapus');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 
-	//EDIT USER
+	//EDIT Provinsi
 	public function edit($id_provinsi)
 	{
 		$provinsi = $this->provinsi_model->detail($id_provinsi);
@@ -85,7 +85,7 @@ class Provinsi extends CI_Controller
 						  'nama_provinsi' 	=> $i->post('nama_provinsi')
 					      );
 			$this->provinsi_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes', 'Data telah diedit');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 		// END MASUK DATABASE

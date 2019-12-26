@@ -13119,10 +13119,10 @@ dl {
       .sidebar .nav .nav-item.active {
         background: #ffffff; }
         .sidebar .nav .nav-item.active > .nav-link .menu-title {
-          color: #b66dff;
+          color: #66BB6A;
           font-family: "ubuntu-medium", sans-serif; }
         .sidebar .nav .nav-item.active > .nav-link i {
-          color: #b66dff; }
+          color: #66BB6A; }
       .sidebar .nav .nav-item:hover {
         background: #fcfcfc; }
       .sidebar .nav .nav-item.nav-profile .nav-link {

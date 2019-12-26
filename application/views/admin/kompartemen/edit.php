@@ -16,7 +16,7 @@
                         <input type="text" name="nama_kompartemen"  class="form-control col-md-5" placeholder="Nama Kompartemen" value="<?php echo $kompartemen->nama_kompartemen?>">
                       </div>
                       
-                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2">
+                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2" style="background: none;background-color: #00acee;">
                         Simpan
                       </button>
 

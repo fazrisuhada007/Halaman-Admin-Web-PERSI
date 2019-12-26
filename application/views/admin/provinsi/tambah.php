@@ -15,7 +15,7 @@
                         <label>Nama Provinsi</label>
                         <input type="text" name="nama_provinsi"  class="form-control col-md-5" placeholder="Nama Provinsi" value="<?php echo set_value('nama_provinsi')?>">
                       </div>
-                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2">
+                      <button type="submit" name="submit" id="Swal.fire" class="btn btn-gradient-primary mr-2" style="background: none;background-color: #00acee;">
                         Simpan
                       </button>
 

@@ -47,7 +47,7 @@ class Kompartemen extends CI_Controller
 						  'nama_kompartemen'=> $i->post('nama_kompartemen')
 						  );
 			$this->kompartemen_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes', 'Data telah ditambah');
 			redirect(base_url('admin/kompartemen'),'refresh');
 		}
 		// END MASUK DATABASE
@@ -58,7 +58,7 @@ class Kompartemen extends CI_Controller
 		{
 			$data = array('id_kompartemen' => $id_kompartemen);
 			$this->kompartemen_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('Sukses', 'Data telah dihapus');
 			redirect(base_url('admin/kompartemen'),'refresh');
 		}
 

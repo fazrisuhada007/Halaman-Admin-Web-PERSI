@@ -7,7 +7,7 @@
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><?php echo " Copyright © 2019 - " . date("Y") ?>
-              <a href="https://www.persi.or.id/">PERSI (Persatuan Rumah Sakit Indonesia)</a>. All rights reserved.</span>
+              <a href="https://www.persi.or.id/">PERSI (Perhimpunan Rumah Sakit Indonesia)</a>. All rights reserved.</span>
             </div>
           </footer>
           <!-- partial -->
@@ -43,5 +43,23 @@
     $('#example').DataTable();
     } )
    </script>
+
+   <!-- Sweet alert -->
+    <script src="<?php echo base_url() ?>asset/assets/sweet_alert/sweetalert2.all.min.js"></script>
+<!--    <script>
+     $(document).ready(function(){
+    $(document).on('click', '#swal', function(){
+    Swal.fire({     
+          icon: 'success',
+          title: 'saved',
+          showConfirmButton: false,
+        })
+      });
+    });
+   </script> -->
+
+
+
+
   </body>
 </html>

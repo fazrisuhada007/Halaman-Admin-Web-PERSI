@@ -25,8 +25,8 @@
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
-                <div class="brand-logo">
-                  <img src="<?php echo base_url() ?>asset/assets/images/logo_login.svg">
+                <div class="brand-logo" style="width:auto; text-align:left;" >
+                  <img src="<?php echo base_url() ?>asset/assets/images/logo_login.svg" style="width:80%;">
                 </div>
                 <h4> <?php echo $title ?> </h4>
                 <h6 class="font-weight-light"> Masuk untuk melanjutkan. </h6>
@@ -54,18 +54,17 @@
                 ?>
                 
                   <div class="form-group">
-                    <input type="text" name="email" id="email" class="form-control form-control-lg"  placeholder="Email">
+                    <input type="text" name="email" id="email" class="form-control form-control-lg"  placeholder="Email" value="<?php echo set_value('email')?>">
                   </div>
                   <div class="form-group">
                     <input type="password" name="password" id="email" class="form-control form-control-lg"  placeholder="Password">
                   </div>
                   <div class="mt-3">
-                    <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
-                  </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
+                    <button style="background: none;background-color: #66BB6A;" type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
+                  </div><br>
+                   <div class="form-check form-check-success">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                        <input type="checkbox" class="form-check-input" > Ingatkan Saya </label>
                     </div>
                 <?php echo form_close(); ?>
 

@@ -1,3 +1,14 @@
+<style type="text/css" media="screen">
+.mdi-pencil-box-outline::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+} 
+.mdi-delete::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+}   
+</style>
+
  <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -8,7 +19,7 @@
                       <div class="row">
                         <div>
                             <a class="nav-link" href="<?=base_url('admin/fasilitas/tambah') ?>">
-                        <button type="button" class="btn btn-gradient-primary mr-2">Add </button>
+                        <button type="button" class="btn btn-gradient-primary mr-2" style="background: none;background-color: #00acee;">Add </button>
                       </a>
                         </div>
                     </div>
@@ -25,10 +36,12 @@
         <tr>
           <td><?php echo $no++ ?></td>
           <td><?php echo $fasilitas->nama_fasilitas ?></td>
-          <td class="text-right">
-            <a href="<?php echo base_url('admin/fasilitas/edit/'.$fasilitas->id_fasilitas)?>" class="btn btn-gradient-success btn-icon-text" ><!-- <i class="mdi mdi-file-check btn-icon-append"> --></i>Update</a>
+          <td class="text-center">
+            
+            <a href="<?php echo base_url('admin/fasilitas/edit/'.$fasilitas->id_fasilitas)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/fasilitas/delete/'.$fasilitas->id_fasilitas)?>" class="btn btn-gradient-danger btn-icon-text" onclick="return confirm('Hapus Data ini?')"><!-- <i class="mdi mdi mdi-delete btn-icon-append"> --></i>Delete</a>
+            <a href="<?php echo base_url('admin/fasilitas/delete/'.$fasilitas->id_fasilitas)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+
           </td>
         </tr>
       <?php }?>

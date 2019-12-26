@@ -43,7 +43,7 @@
                         <input type="file" name="photo_forum">
                       </div>
 
-                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2">
+                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2"  style="background: none;background-color: #00acee;">
                         Simpan
                       </button>
 

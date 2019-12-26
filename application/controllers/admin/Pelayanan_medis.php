@@ -47,7 +47,7 @@ class Pelayanan_medis extends CI_Controller
 						  'nama_pelayanan_medis'=> $i->post('nama_pelayanan_medis')
 						  );
 			$this->pelayanan_medis_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes', 'Data telah ditambah');
 			redirect(base_url('admin/pelayanan_medis'),'refresh');
 		}
 		// END MASUK DATABASE
@@ -58,7 +58,7 @@ class Pelayanan_medis extends CI_Controller
 		{
 			$data = array('id_pelayanan_medis' => $id_pelayanan_medis);
 			$this->pelayanan_medis_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('Sukses', 'Data telah dihapus');
 			redirect(base_url('admin/pelayanan_medis'),'refresh');
 		}
 

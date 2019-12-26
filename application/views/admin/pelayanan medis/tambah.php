@@ -16,7 +16,7 @@
                         <input type="text" name="nama_pelayanan_medis" class="form-control col-md-5" placeholder="Nama Pelayanan Medis" value="<?php echo set_value('nama_pelayanan_medis')?>">
                       </div>
 
-                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2">
+                      <button type="submit" name="submit" class="btn btn-gradient-primary mr-2" style="background: none;background-color: #00acee;">
                         Simpan
                       </button>
 

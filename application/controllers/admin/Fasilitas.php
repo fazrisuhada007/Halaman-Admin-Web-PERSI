@@ -47,7 +47,7 @@ class Fasilitas extends CI_Controller
 						  'nama_fasilitas'=> $i->post('nama_fasilitas')
 						  );
 			$this->fasilitas_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah ditambah');
+			$this->session->set_flashdata('suskes','Data telah ditambah');
 			redirect(base_url('admin/fasilitas'),'refresh');
 		}
 		// END MASUK DATABASE
@@ -58,7 +58,7 @@ class Fasilitas extends CI_Controller
 		{
 			$data = array('id_fasilitas' => $id_fasilitas);
 			$this->fasilitas_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('Sukses','Data telah dihapus');
 			redirect(base_url('admin/fasilitas'),'refresh');
 		}
 

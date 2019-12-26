@@ -8,6 +8,7 @@ class Forum extends CI_Controller
 		parent::__construct();
 		$this->load->model('forum_model');
 		$this->load->model('kompartemen_model');
+		$this->load->model('komentar_model');
 		//PROTEKSI HALAMAN
 		$this->simple_login->cek_login();
 	}
@@ -96,7 +97,7 @@ class Forum extends CI_Controller
 			      'tanggal_update' => date('Y-m-d H:i:s')
 			      );
 			$this->forum_model->tambah($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes','Data telah diedit');
 			redirect(base_url('admin/forum'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -181,7 +182,7 @@ class Forum extends CI_Controller
 		      'tanggal_update'  => date('Y-m-d H:i:s')
 			      );
 			$this->forum_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes','Data telah diedit');
 			redirect(base_url('admin/forum'),'refresh');
 		}} else {
 			//Edit forum tanpa ganti photo

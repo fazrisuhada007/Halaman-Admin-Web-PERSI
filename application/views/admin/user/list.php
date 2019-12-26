@@ -1,3 +1,14 @@
+ <style type="text/css" media="screen">
+.mdi-pencil-box-outline::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+} 
+.mdi-delete::before {
+    font-size: 30px;
+    /* color: #66BB6A; */
+}   
+</style>
+
  <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -9,7 +20,7 @@
                     <div class="row">
                         <div>
                       <a class="nav-link" href="<?=base_url('admin/user/tambah') ?>">
-                        <button type="button" class="btn btn-gradient-primary mr-1">Add</button>
+                        <button type="button" class="btn btn-gradient-primary mr-1" style="background: none;background-color: #00acee;">Add</button>
                       </a>
                         </div>
                     </div>
@@ -47,10 +58,13 @@
               }
             ?>  
           </td> --> 
-          <td >
-            <a href="<?php echo base_url('admin/user/edit/'.$user->id_rumah_sakit)?>" class="btn btn-gradient-success btn-icon-text" ><!-- <i class="mdi mdi-file-check btn-icon-append"> --></i>Update</a>
+          <td class="text-center">
+            
+            <a href="<?php echo base_url('admin/user/edit/'.$user->id_rumah_sakit)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/user/delete/'.$user->id_rumah_sakit)?>" class="btn btn-gradient-danger btn-icon-text" onclick="return confirm('Hapus Data ini?')"><!-- <i class="mdi mdi mdi-delete btn-icon-append"> --></i>Delete</a>
+            <a href="<?php echo base_url('admin/user/delete/'.$user->id_rumah_sakit)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+
            
           </td>
         </tr>
