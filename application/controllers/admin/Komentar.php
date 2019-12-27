@@ -27,14 +27,14 @@ class Komentar extends CI_Controller
 		$this->load->view('admin/layout/wrapper', $data);
 	}
 
-		//DELETE komentar
-		public function delete($id_komentar)
-		{
-			
-			$data = array('id_komentar' => $id_komentar);
-			$this->komentar_model->delete($data);
-			$this->session->set_flashdata('sukses', 'Data telah dihapus');
-			redirect(base_url('admin/komentar/?id_forum='.$forum->id_forum),'refresh');
+	    public function delete()
+	    {        
+		    $id_komentar = $this->input->post('id');
+		    foreach ($id_komentar as $key => $kom) {
+		    	$this->komentar_model->delete($kom); 
+		    }
+		    	echo 'Komentar berhasil dihapus';	
+
 		}
 }
 

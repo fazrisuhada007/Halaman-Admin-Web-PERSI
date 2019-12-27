@@ -37,10 +37,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		//HAPUS
-		public function delete($data)
-		{
-			$this->db->where('id_komentar', $data['id_komentar']);
-			$this->db->delete('komentar', $data);
+		public function delete($id_komentar)
+		{ 
+		    $this->db->where_in('id_komentar', $id_komentar);    
+		    $this->db->delete('komentar');  
 		}
 }
 

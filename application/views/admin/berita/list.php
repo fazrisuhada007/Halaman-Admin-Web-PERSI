@@ -27,9 +27,9 @@
                     </div>
                    <table align="center" id="example" class="table table-striped table-bordered" style="overflow: auto; width:auto; display:block!important;">
                       <thead>
-                        <tr>
+                        <tr class="text-center">
                           <th>No</th>
-                          <th>Photo Berita</th>
+                          <!-- <th>Photo Berita</th> -->
                           <th>Judul Berita</th>
                           <th>Tanggal Update</th>
                           <th>Aksi</th>
@@ -39,9 +39,9 @@
       <?php $no=1; foreach ($berita as $berita) { ?>
         <tr>
           <td><?php echo $no++ ?></td>
-          <td>
+         <!--  <td>
             <img src="<?php echo base_url('asset/upload/image/thumbs/'.$berita->photo) ?>" style="width:100%; height:100%;" class="rounded"/>
-          </td>
+          </td> -->
           <td><?php echo $berita->judul_berita ?></td>
           <td><?php echo $berita->tanggal_update ?></td>
           <td class="text-center">
