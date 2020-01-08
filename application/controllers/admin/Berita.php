@@ -16,9 +16,9 @@ class Berita extends CI_Controller
 	{
 		$berita = $this->berita_model->listing();
 
-		$data = array ( 'title' => 'Data Berita',
+		$data = array ( 'title' 	=> 'Data Berita',
 						'berita'	=> $berita,
-						'isi'	=> 'admin/berita/list'
+						'isi'		=> 'admin/berita/list'
 						);
 
 		$this->load->view('admin/layout/wrapper', $data);
@@ -30,10 +30,11 @@ class Berita extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('judul_berita', 'Judul Berita', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('judul_berita', 'Judul Berita', 'required|max_length[70]', 
+				array('required'    => '%s harus diisi',
+					  'max_length'=> 'Maksimal judul berita 70 karakter.',));
 		$valid->set_rules('isi', 'Isi Berita', 'required', 
-				array('required' => '%s harus diisi'));
+				array('required'    => '%s harus diisi'));
 		
 
 		if($valid->run()) {
@@ -83,7 +84,7 @@ class Berita extends CI_Controller
 			      'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->tambah($data);
-			$this->session->set_flashdata('suskes','Data telah ditambah');
+			$this->session->set_flashdata('sukses','Data berhasil ditambahkan.');
 			redirect(base_url('admin/berita'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -101,8 +102,9 @@ class Berita extends CI_Controller
 		//VALIDASI edit
 		$valid = $this->form_validation;
 
-		$valid->set_rules('judul_berita', 'Judul Berita', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('judul_berita', 'Judul Berita', 'required|max_length[70]', 
+				array('required'    => '%s harus diisi',
+					  'max_length'  => 'Judul berita Maksimal 70 karakter.',));
 
 		$valid->set_rules('isi', 'Isi Berita', 'required', 
 				array('required' => '%s harus diisi'));
@@ -124,7 +126,7 @@ class Berita extends CI_Controller
 
 		$data = array ('title'	  => 'Edit Berita',
 					   'berita'	  => $berita,
-					   // 'error'    => $this->upload->display_errors(),
+					   'error'    => $this->upload->display_errors(),
 					   'isi'	  => 'admin/berita/edit'
 					  );
 		$this->load->view('admin/layout/wrapper', $data);
@@ -158,7 +160,7 @@ class Berita extends CI_Controller
 			  'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->edit($data);
-			$this->session->set_flashdata('suskes','Data telah diedit');
+			$this->session->set_flashdata('sukses','Data berhasil diedit.');
 			redirect(base_url('admin/berita'),'refresh');
 		}} else {
 			//Edit berita tanpa ganti photo
@@ -171,7 +173,7 @@ class Berita extends CI_Controller
 			  'tanggal_update'	=> date('Y-m-d H:i:s')
 			      );
 			$this->berita_model->edit($data);
-			$this->session->set_flashdata('suskes','Data telah diedit');
+			$this->session->set_flashdata('sukses','Data berhasil diedit.');
 			redirect(base_url('admin/berita'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -193,7 +195,7 @@ class Berita extends CI_Controller
 			//End proses hapus
 			$data = array('id_berita' => $id_berita);
 			$this->berita_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
 			redirect(base_url('admin/berita'),'refresh');
 		}
 

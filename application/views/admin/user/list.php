@@ -16,7 +16,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    </li>
+
+                    <?php
+                    //Notifikasi
+                    if($this->session->flashdata('sukses')) {
+                      echo '<div class="alert alert-success">';
+                      echo $this->session->flashdata('sukses');
+                      echo '</div>';
+                    }
+                    ?>
+                    
                     <div class="row">
                         <div>
                       <a class="nav-link" href="<?=base_url('admin/user/tambah') ?>">

@@ -7,9 +7,15 @@
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
                     <?php
-                    //NOTIFIKASI
-                    echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?>
+                      //Error upload
+                      if(isset($error)) {
+                        echo '<div class="alert alert-warning">';
+                        echo 'File photo terlalu besar.';
+                        echo '</div>';
+                      }
+                      //NOTIFIKASI
+                      echo validation_errors('<div class="alert alert-warning">','</div>');
+                    ?><br>
                     <form method="POST" action="<?php base_url('admin/berita/tambah')?>" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Judul Berita</label>
@@ -23,7 +29,7 @@
 
                       <div class="form-group">
                         <label>Upload Photo</label><br>
-                        <input type="file" name="photo" required="required">
+                        <input type="file" name="photo"  value="<?php echo set_value('photo')?>">
                       </div>
 
                       <!-- <div class="form-group">

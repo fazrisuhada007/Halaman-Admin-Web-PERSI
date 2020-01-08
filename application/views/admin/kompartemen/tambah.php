@@ -6,11 +6,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <?php
+                    <!--<?php
                     //NOTIFIKASI
                     echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?>
-                    <form action="<?php base_url('admin/kompartemen/tambah')?>" method="POST">
+                    ?> -->
+                    <form action="<?php base_url('admin/kompartemen/tambah')?>" method="POST" id="FormId">
 
                        <div class="form-group">
                         <label>Nama Kompartemen</label>
@@ -29,3 +29,4 @@
                   </div>
                 </div>
               </div>
+

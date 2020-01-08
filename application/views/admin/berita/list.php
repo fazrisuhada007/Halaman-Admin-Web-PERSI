@@ -16,7 +16,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    </li>
+
+                    <?php
+                    //Notifikasi
+                    if($this->session->flashdata('sukses')) {
+                      echo '<div class="alert alert-success">';
+                      echo $this->session->flashdata('sukses');
+                      echo '</div>';
+                    }
+                    ?>
+
                     <div class="row">
                         <div>
                             <a class="nav-link" href="<?=base_url('admin/berita/tambah') ?>">
@@ -25,7 +34,7 @@
                       </a>
                         </div>
                     </div>
-                   <table align="center" id="example" class="table table-striped table-bordered" style="overflow: auto; width:auto; display:block!important;">
+                   <table align="center" id="example" class="table table-striped table-bordered" >
                       <thead>
                         <tr class="text-center">
                           <th>No</th>

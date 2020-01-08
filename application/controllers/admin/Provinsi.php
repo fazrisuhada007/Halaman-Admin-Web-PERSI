@@ -45,7 +45,7 @@ class Provinsi extends CI_Controller
 			$i 	  = $this->input;
 			$data = array('nama_provinsi'=> $i->post('nama_provinsi'));
 			$this->provinsi_model->tambah($data);
-			$this->session->set_flashdata('suskes','Data telah ditambah');
+			$this->session->set_flashdata('sukses','Data berhasil ditambahkan.');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 		// END MASUK DATABASE
@@ -56,7 +56,7 @@ class Provinsi extends CI_Controller
 		{
 			$data = array('id_provinsi' => $id_provinsi);
 			$this->provinsi_model->delete($data);
-			$this->session->set_flashdata('sukses','Data telah dihapus');
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 
@@ -85,7 +85,7 @@ class Provinsi extends CI_Controller
 						  'nama_provinsi' 	=> $i->post('nama_provinsi')
 					      );
 			$this->provinsi_model->edit($data);
-			$this->session->set_flashdata('suskes', 'Data telah diedit');
+			$this->session->set_flashdata('sukses', 'Data berhasil diedit.');
 			redirect(base_url('admin/provinsi'),'refresh');
 		}
 		// END MASUK DATABASE

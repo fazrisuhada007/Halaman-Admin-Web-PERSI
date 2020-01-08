@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/assets/css/dataTables.bootstrap4.min.css">
 
     <!-- Sweet Alert -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>asset/assets/sweet_alert/sweetalert2.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>asset/assets/sweet_alert/sweetalert2.css">
-
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/assets/alert/css/sweetalert.css">
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -33,4 +31,5 @@
     <script src="<?=base_url() ?>/asset/ckeditor/ckeditor.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>asset/assets/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8" async defer></script>
     <script src="<?=base_url() ?>/asset/ckeditor/samples/js/sample.js" type="text/javascript"></script>
+
   </head>

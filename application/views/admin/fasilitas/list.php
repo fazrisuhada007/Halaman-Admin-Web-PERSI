@@ -16,6 +16,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
+                    
+                        <?php
+                        //Notifikasi
+                        if($this->session->flashdata('sukses')) {
+                          echo '<div class="alert alert-success">';
+                          echo $this->session->flashdata('sukses');
+                          echo '</div>';
+                        }
+                        ?>
+
                       <div class="row">
                         <div>
                             <a class="nav-link" href="<?=base_url('admin/fasilitas/tambah') ?>">
@@ -40,7 +50,8 @@
             
             <a href="<?php echo base_url('admin/fasilitas/edit/'.$fasilitas->id_fasilitas)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/fasilitas/delete/'.$fasilitas->id_fasilitas)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+           <!--  <a href="<?php echo base_url('admin/fasilitas/delete/'.$fasilitas->id_fasilitas)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+           <?php include('delete.php') ?>
 
           </td>
         </tr>

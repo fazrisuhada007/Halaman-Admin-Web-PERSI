@@ -6,10 +6,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <?php
-                    //NOTIFIKASI
-                    echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?>
+                   <?php
+                      //Error upload
+                      if(isset($error)) {
+                        echo '<div class="alert alert-warning">';
+                        echo 'File photo terlalu besar.';
+                        echo '</div>';
+                      }
+                      //NOTIFIKASI
+                      echo validation_errors('<div class="alert alert-warning">','</div>');
+                    ?><br>
                     <form method="POST" action="<?php base_url('admin/berita/edit')?>" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Judul Berita</label>

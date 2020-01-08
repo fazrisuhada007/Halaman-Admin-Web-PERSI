@@ -47,20 +47,11 @@ class Kompartemen extends CI_Controller
 						  'nama_kompartemen'=> $i->post('nama_kompartemen')
 						  );
 			$this->kompartemen_model->tambah($data);
-			$this->session->set_flashdata('suskes', 'Data telah ditambah');
-			redirect(base_url('admin/kompartemen'),'refresh');
+			$this->session->set_flashdata('sukses','Data berhasil ditambahkan');
+			redirect(site_url('admin/kompartemen'),'refersh');
 		}
 		// END MASUK DATABASE
 	}
-
-		//DELETE kompartemen
-		public function delete($id_kompartemen)
-		{
-			$data = array('id_kompartemen' => $id_kompartemen);
-			$this->kompartemen_model->delete($data);
-			$this->session->set_flashdata('Sukses', 'Data telah dihapus');
-			redirect(base_url('admin/kompartemen'),'refresh');
-		}
 
 	//EDIT kompartemen
 	public function edit($id_kompartemen)
@@ -87,11 +78,20 @@ class Kompartemen extends CI_Controller
 						  'nama_kompartemen' 	=> $i->post('nama_kompartemen')
 					      );
 			$this->kompartemen_model->edit($data);
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('sukses','Data berhasil disimpan');
 			redirect(base_url('admin/kompartemen'),'refresh');
 		}
 		// END MASUK DATABASE
 	}
+
+	//DELETE kompartemen
+	public function delete($id_kompartemen)
+	{
+	 	$data = array('id_kompartemen' => $id_kompartemen);
+		$this->kompartemen_model->delete($data);
+		$this->session->set_flashdata('sukses','Data berhasil dihapus.');
+		redirect(base_url('admin/kompartemen'),'refresh');
+    }
 }
 
 ?>

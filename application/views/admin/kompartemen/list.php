@@ -15,7 +15,13 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                    <div class="flash" data-flash="<?= $this->session->flashdata('sukses');?>">
                     <h4 class="card-title"><?php echo $title ?></h4>
+
+                    <!-- <?php if (!empty($this->session->flashdata('sukses'))): ?> -->
+                      
+                   <!--  <?php endif; ?> -->
+
                       <div class="row">
                         <div>
                            <a class="nav-link" href="<?=base_url('admin/kompartemen/tambah') ?>">
@@ -40,9 +46,15 @@
             
             <a href="<?php echo base_url('admin/kompartemen/edit/'.$kompartemen->id_kompartemen)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!-- 
+              <a href="<?php echo base_url('admin/kompartemen/delete/'.$kompartemen->id_kompartemen)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+            <!-- <a onclick="deletedata(<?php echo $kompartemen->id_kompartemen ?>)" href="#"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+            <a  href="<?php echo base_url('admin/kompartemen/delete/'.$kompartemen->id_kompartemen)?>" class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+             <!-- <a href="<?php echo base_url('admin/kompartemen/delete/'.$kompartemen->id_kompartemen)?>" onclick="deletedata(<?php echo $kompartemen->id_kompartemen ?>)"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+        </td>
+    </tr>
 
-            <a href="<?php echo base_url('admin/kompartemen/delete/'.$kompartemen->id_kompartemen)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
-
+           
           </td>
         </tr>
       <?php }?>
@@ -52,3 +64,42 @@
                 </div>
               </div>
             </div>
+
+<script>
+  function deletedata(id_kompartemen) 
+    {
+        Swal.fire({
+        title: 'Hapus data ini?',
+        text: "Data yang telah dihapus tidak dapat dikembalikan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus data!',
+        // closeOnConfirm: true
+      },
+      function() {
+        $.ajax({
+          url  : '<?php echo base_url('admin/kompartemen/delete/'.$kompartemen->id_kompartemen)?>',
+          method :'post',
+          type : 'delete',
+          data : {id_kompartemen:id_kompartemen},
+          success:function(){
+            Swal.fire('Data berhasil dihapus', 'success');
+          },
+          error:function(){
+            Swal.fire('Data gagal dihapus', 'error');
+          }
+        });
+      });
+    }
+</script>
+.then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})

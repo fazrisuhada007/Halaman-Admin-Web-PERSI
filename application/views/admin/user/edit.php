@@ -6,11 +6,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <?php
+                   <?php
                       //Error upload
                       if(isset($error)) {
-                        echo '<div class="alet alert-warning col-sm-3">';
-                        echo 'File photo yang anda terlalu besar.';
+                        echo '<div class="alert alert-warning">';
+                        echo 'File photo terlalu besar.';
                         echo '</div>';
                       }
                       //NOTIFIKASI

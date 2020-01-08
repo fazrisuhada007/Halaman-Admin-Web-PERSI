@@ -6,10 +6,10 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <?php
+                    <!-- <?php
                     //NOTIFIKASI
                     echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?>
+                    ?> -->
                     <form action="<?php base_url('admin/kompartemen/edit'.$kompartemen->id_kompartemen)?>" method="POST">
                       <div class="form-group">
                         <label>Nama Kompartemen</label>

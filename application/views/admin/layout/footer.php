@@ -41,25 +41,38 @@
    <script >
     $(document).ready(function() {
     $('#example').DataTable();
+      alertNya();
     } )
+    function alertNya(){
+    let flash = $('.flash').data('flash');
+    if (!jQuery.isEmptyObject(flash)) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        })
+    }
+  }
+  $('.tombol-hapus').on('click',function(e){
+    e.preventDefault();
+    let href = $(this).attr('href')
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = href
+      }
+    })
+  })
    </script>
 
-   <!-- Sweet alert -->
-    <script src="<?php echo base_url() ?>asset/assets/sweet_alert/sweetalert2.all.min.js"></script>
-<!--    <script>
-     $(document).ready(function(){
-    $(document).on('click', '#swal', function(){
-    Swal.fire({     
-          icon: 'success',
-          title: 'saved',
-          showConfirmButton: false,
-        })
-      });
-    });
-   </script> -->
-
-
-
-
+<!-- sweetalert -->
+<script src="<?php echo base_url() ?>asset/assets/sweetalert/sweetalert2.all.min.js"></script>
+<script src="<?php echo base_url() ?>asset/assets/sweetalert/myscript.js"></script>
   </body>
 </html>

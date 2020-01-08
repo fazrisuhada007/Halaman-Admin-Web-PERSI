@@ -129,9 +129,9 @@ class User extends CI_Controller
 			if ($tambah_anggota_rumah_sakit) {
 				$data['id_rumah_sakit'] = $this->db->insert_id();
 				$tambah_user= $this->user_model->tambah_user($data);
+				$this->session->set_flashdata('suskes','Data berhasil ditambahkan.');
+		        redirect(base_url('admin/user'),'refresh');
 			}
-			$this->session->set_flashdata('suskes', 'Data telah ditambah');
-			redirect(base_url('admin/user'),'refresh');
 		}}
 		// END MASUK DATABASE
 		$data = array ('title'	  => 'Tambah User',
@@ -246,7 +246,7 @@ class User extends CI_Controller
 				// $data2['id_user'] = $this->db->insert_id();
 				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_user);
 			}
-			$this->session->set_flashdata('suskes, Data telah diedit');
+			$this->session->set_flashdata('suskes','Data berhasil diedit.');
 			redirect(base_url('admin/user'),'refresh');
 		}} else {
 			//Edit user tanpa ganti photo
@@ -277,7 +277,7 @@ class User extends CI_Controller
 				// $data2['id_rumah_sakit'] = $this->db->insert_id();
 				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_rumah_sakit);
 			}
-			$this->session->set_flashdata('suskes', 'Data telah diedit');
+			$this->session->set_flashdata('suskes','Data berhasil diedit.');
 			redirect(base_url('admin/user'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -302,7 +302,7 @@ class User extends CI_Controller
 			$data = array('id_rumah_sakit' => $id_rumah_sakit);
 			$this->user_model->delete($data);
 			$this->user_model->delete_anggota($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
 			redirect(base_url('admin/user'),'refresh');
 		} 
 
