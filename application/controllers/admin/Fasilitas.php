@@ -16,9 +16,9 @@ class Fasilitas extends CI_Controller
 	{
 		$fasilitas = $this->fasilitas_model->listing();
 
-		$data = array ( 'title' => 'Data Fasilitas',
+		$data = array ( 'title'     => 'Data Fasilitas',
 						'fasilitas'	=> $fasilitas,
-						'isi'	=> 'admin/fasilitas/list'
+						'isi'	    => 'admin/fasilitas/list'
 						);
 
 		$this->load->view('admin/layout/wrapper', $data);
@@ -30,8 +30,11 @@ class Fasilitas extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_fasilitas', 'Nama fasilitas', 'required', 
-					array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_fasilitas', 'nama fasilitas',
+						  'required|is_unique[fasilitas.nama_fasilitas]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama fasilitas baru.',
+						  'max_length'=> 'maksimal nama fasilitas 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -53,15 +56,6 @@ class Fasilitas extends CI_Controller
 		// END MASUK DATABASE
 	}
 
-		//DELETE fasilitas
-		public function delete($id_fasilitas)
-		{
-			$data = array('id_fasilitas' => $id_fasilitas);
-			$this->fasilitas_model->delete($data);
-			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
-			redirect(base_url('admin/fasilitas'),'refresh');
-		}
-
 	//EDIT fasilitas
 	public function edit($id_fasilitas)
 	{
@@ -69,8 +63,11 @@ class Fasilitas extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_fasilitas', 'Nama Fasilitas', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_fasilitas', 'nama fasilitas',
+						  'required|is_unique[fasilitas.nama_fasilitas]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama fasilitas baru.',
+						  'max_length'=> 'maksimal nama fasilitas 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -92,6 +89,15 @@ class Fasilitas extends CI_Controller
 		}
 		// END MASUK DATABASE
 	}
+
+	//DELETE fasilitas
+		public function delete($id_fasilitas)
+		{
+			$data = array('id_fasilitas' => $id_fasilitas);
+			$this->fasilitas_model->delete($data);
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
+			redirect(base_url('admin/fasilitas'),'refresh');
+		}
 }
 
 ?>

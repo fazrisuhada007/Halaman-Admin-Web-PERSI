@@ -16,9 +16,9 @@ class Kompartemen extends CI_Controller
 	{
 		$kompartemen = $this->kompartemen_model->listing();
 
-		$data = array ( 'title' => 'Data Kompartemen',
-						'kompartemen'	=> $kompartemen,
-						'isi'	=> 'admin/kompartemen/list'
+		$data = array ( 'title'      => 'Data Kompartemen',
+						'kompartemen'=> $kompartemen,
+						'isi'     	 => 'admin/kompartemen/list'
 						);
 
 		$this->load->view('admin/layout/wrapper', $data);
@@ -30,8 +30,11 @@ class Kompartemen extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_kompartemen', 'Nama kompartemen', 'required', 
-					array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_kompartemen', 'nama kompartemen',
+						  'required|is_unique[kompartemen.nama_kompartemen]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama kompartemen baru.',
+						  'max_length'=> 'maksimal nama kompartemen 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -47,7 +50,7 @@ class Kompartemen extends CI_Controller
 						  'nama_kompartemen'=> $i->post('nama_kompartemen')
 						  );
 			$this->kompartemen_model->tambah($data);
-			$this->session->set_flashdata('sukses','Data berhasil ditambahkan');
+			$this->session->set_flashdata('sukses', 'sukses diproses');
 			redirect(site_url('admin/kompartemen'),'refersh');
 		}
 		// END MASUK DATABASE
@@ -60,14 +63,17 @@ class Kompartemen extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_kompartemen', 'Nama Kompartemen', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_kompartemen', 'nama kompartemen',
+						  'required|is_unique[kompartemen.nama_kompartemen]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama kompartemen baru.',
+						  'max_length'=> 'maksimal nama kompartemen 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
-		$data = array ('title'	=> 'Edit Kompartemen',
-					   'kompartemen'	=> $kompartemen,
-					   'isi'	=> 'admin/kompartemen/edit'
+		$data = array ('title'	    => 'Edit Kompartemen',
+					   'kompartemen'=> $kompartemen,
+					   'isi'	    => 'admin/kompartemen/edit'
 					  );
 		$this->load->view('admin/layout/wrapper', $data);
 
@@ -89,7 +95,7 @@ class Kompartemen extends CI_Controller
 	{
 	 	$data = array('id_kompartemen' => $id_kompartemen);
 		$this->kompartemen_model->delete($data);
-		$this->session->set_flashdata('sukses','Data berhasil dihapus.');
+		$this->session->set_flashdata('sukses','sukses diproses');
 		redirect(base_url('admin/kompartemen'),'refresh');
     }
 }

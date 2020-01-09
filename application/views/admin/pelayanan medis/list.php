@@ -15,17 +15,11 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><?php echo $title ?></h4>
 
-                     <?php
-                      //Notifikasi
-                      if($this->session->flashdata('sukses')) {
-                        echo '<div class="alert alert-success">';
-                        echo $this->session->flashdata('sukses');
-                        echo '</div>';
-                      }
-                      ?>
-                      
+                    <!-- Perintah menampilkan sweet alert -->
+                    <div class="flash" data-flash="<?= $this->session->flashdata('sukses');?>">
+
+                    <h4 class="card-title"><?php echo $title ?></h4>
                      <div class="row">
                         <div>
                             <a class="nav-link" href="<?=base_url('admin/pelayanan_medis/tambah') ?>">
@@ -51,7 +45,9 @@
 
            <a href="<?php echo base_url('admin/pelayanan_medis/edit/'.$pelayanan_medis->id_pelayanan_medis)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/pelayanan_medis/delete/'.$pelayanan_medis->id_pelayanan_medis)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+            <!-- <a href="<?php echo base_url('admin/pelayanan_medis/delete/'.$pelayanan_medis->id_pelayanan_medis)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+
+             <a href="<?php echo base_url('admin/pelayanan_medis/delete/'.$pelayanan_medis->id_pelayanan_medis)?>" class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> 
 
           </td>
         </tr>

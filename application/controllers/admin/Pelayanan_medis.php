@@ -16,9 +16,9 @@ class Pelayanan_medis extends CI_Controller
 	{
 		$pelayanan_medis = $this->pelayanan_medis_model->listing();
 
-		$data = array ( 'title' => 'Data Pelayanan Medis',
-						'pelayanan_medis'	=> $pelayanan_medis,
-						'isi'	=> 'admin/pelayanan medis/list'
+		$data = array ( 'title'          => 'Data Pelayanan Medis',
+						'pelayanan_medis'=> $pelayanan_medis,
+						'isi'	         => 'admin/pelayanan medis/list'
 						);
 
 		$this->load->view('admin/layout/wrapper', $data);
@@ -30,8 +30,11 @@ class Pelayanan_medis extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_pelayanan_medis', 'Nama pelayanan medis', 'required', 
-					array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_pelayanan_medis', 'nama pelayanan medis',
+						  'required|is_unique[pelayanan_medis.nama_pelayanan_medis]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama pelayanan medis baru.',
+						  'max_length'=> 'maksimal nama pelayanan medis 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -53,15 +56,6 @@ class Pelayanan_medis extends CI_Controller
 		// END MASUK DATABASE
 	}
 
-		//DELETE pelayanan medis
-		public function delete($id_pelayanan_medis)
-		{
-			$data = array('id_pelayanan_medis' => $id_pelayanan_medis);
-			$this->pelayanan_medis_model->delete($data);
-			$this->session->set_flashdata('sukses', 'Data berhasil dihapus.');
-			redirect(base_url('admin/pelayanan_medis'),'refresh');
-		}
-
 	//EDIT pelayanan medis
 	public function edit($id_pelayanan_medis)
 	{
@@ -69,8 +63,11 @@ class Pelayanan_medis extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_pelayanan_medis', 'Nama Pelayanan_medis', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_pelayanan_medis', 'nama pelayanan medis',
+						  'required|is_unique[pelayanan_medis.nama_pelayanan_medis]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama pelayanan medis baru.',
+						  'max_length'=> 'maksimal nama pelayanan medis 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -92,6 +89,15 @@ class Pelayanan_medis extends CI_Controller
 		}
 		// END MASUK DATABASE
 	}
+
+		//DELETE pelayanan medis
+		public function delete($id_pelayanan_medis)
+		{
+			$data = array('id_pelayanan_medis' => $id_pelayanan_medis);
+			$this->pelayanan_medis_model->delete($data);
+			$this->session->set_flashdata('sukses', 'Data berhasil dihapus.');
+			redirect(base_url('admin/pelayanan_medis'),'refresh');
+		}
 }
 
 ?>

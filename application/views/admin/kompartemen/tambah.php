@@ -6,15 +6,19 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <!--<?php
+
+                    <?php
                     //NOTIFIKASI
-                    echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?> -->
-                    <form action="<?php base_url('admin/kompartemen/tambah')?>" method="POST" id="FormId">
+                    echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Peringatan!</strong> ','</div>');
+                    ?>
+                    
+                    <form action="<?php base_url('admin/kompartemen/tambah')?>" method="POST">
 
                        <div class="form-group">
                         <label>Nama Kompartemen</label>
-                        <input type="text" name="nama_kompartemen" class="form-control col-md-5" placeholder="Nama Kompartemen" value="<?php echo set_value('nama_kompartemen')?>">
+                        <input type="text" name="nama_kompartemen" placeholder="Nama Kompartemen" value="<?php echo set_value('nama_kompartemen')?>" class="form-control col-md-5" autocomplete="off" autofocus />
                       </div>
 
                       <button type="submit" name="submit" class="btn btn-gradient-primary mr-1" style="background: none;background-color: #00acee;">

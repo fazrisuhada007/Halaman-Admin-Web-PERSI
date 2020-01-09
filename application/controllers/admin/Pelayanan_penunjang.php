@@ -30,8 +30,11 @@ class Pelayanan_penunjang extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_pelayanan_penunjang', 'Nama pelayanan penunjang', 'required', 
-					array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_pelayanan_penunjang', 'nama pelayanan penunjang',
+						  'required|is_unique[pelayanan_penunjang.nama_pelayanan_penunjang]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama pelayanan penunjang baru.',
+						  'max_length'=> 'maksimal nama pelayanan penunjang 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -53,14 +56,6 @@ class Pelayanan_penunjang extends CI_Controller
 		// END MASUK DATABASE
 	}
 
-		//DELETE pelayanan penunjang
-		public function delete($id_pelayanan_penunjang)
-		{
-			$data = array('id_pelayanan_penunjang' => $id_pelayanan_penunjang);
-			$this->pelayanan_penunjang_model->delete($data);
-			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
-			redirect(base_url('admin/pelayanan_penunjang'),'refresh');
-		}
 
 	//EDIT pelayanan penunjang
 	public function edit($id_pelayanan_penunjang)
@@ -69,8 +64,11 @@ class Pelayanan_penunjang extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_pelayanan_penunjang', 'Nama Pelayanan_penunjang', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_pelayanan_penunjang', 'nama pelayanan penunjang',
+						  'required|is_unique[pelayanan_penunjang.nama_pelayanan_penunjang]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama pelayanan penunjang baru.',
+						  'max_length'=> 'maksimal nama pelayanan penunjang 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -92,6 +90,15 @@ class Pelayanan_penunjang extends CI_Controller
 		}
 		// END MASUK DATABASE
 	}
+
+		//DELETE pelayanan penunjang
+		public function delete($id_pelayanan_penunjang)
+		{
+			$data = array('id_pelayanan_penunjang' => $id_pelayanan_penunjang);
+			$this->pelayanan_penunjang_model->delete($data);
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
+			redirect(base_url('admin/pelayanan_penunjang'),'refresh');
+		}
 }
 
 ?>

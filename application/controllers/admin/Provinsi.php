@@ -30,8 +30,11 @@ class Provinsi extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_provinsi', 'Nama Provinsi', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_provinsi', 'nama provinsi',
+						  'required|is_unique[provinsi.nama_provinsi]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama provinsi baru.',
+						  'max_length'=> 'maksimal nama provinsi 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -51,15 +54,6 @@ class Provinsi extends CI_Controller
 		// END MASUK DATABASE
 	}
 
-		//DELETE Provinsi
-		public function delete($id_provinsi)
-		{
-			$data = array('id_provinsi' => $id_provinsi);
-			$this->provinsi_model->delete($data);
-			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
-			redirect(base_url('admin/provinsi'),'refresh');
-		}
-
 	//EDIT Provinsi
 	public function edit($id_provinsi)
 	{
@@ -67,8 +61,11 @@ class Provinsi extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_provinsi', 'Nama Provinsi', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_provinsi', 'nama provinsi',
+						  'required|is_unique[provinsi.nama_provinsi]|max_length[100]', 
+					array('required'  => '%s harus diisi.',
+						  'is_unique' => '%s sudah ada, buat nama provinsi baru.',
+						  'max_length'=> 'maksimal nama provinsi 100 karakter.'));
 
 		if($valid->run()===FALSE) {
 
@@ -90,6 +87,15 @@ class Provinsi extends CI_Controller
 		}
 		// END MASUK DATABASE
 	}
+
+		//DELETE Provinsi
+		public function delete($id_provinsi)
+		{
+			$data = array('id_provinsi' => $id_provinsi);
+			$this->provinsi_model->delete($data);
+			$this->session->set_flashdata('sukses','Data berhasil dihapus.');
+			redirect(base_url('admin/provinsi'),'refresh');
+		}
 }
 
 ?>

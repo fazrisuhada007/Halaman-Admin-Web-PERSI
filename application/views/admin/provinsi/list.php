@@ -14,17 +14,11 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+
+                    <!-- Perintah menampilkan sweet alert -->
+                    <div class="flash" data-flash="<?= $this->session->flashdata('sukses');?>">
+
                     <h4 class="card-title"><?php echo $title ?></h4>
-
-                      <?php
-                      //Notifikasi
-                      if($this->session->flashdata('sukses')) {
-                        echo '<div class="alert alert-success">';
-                        echo $this->session->flashdata('sukses');
-                        echo '</div>';
-                      }
-                      ?>
-
                       <div class="row">
 
                         <div>
@@ -39,7 +33,7 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Provinsi</th>
-                          <th >Aksi</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
     <tbody>
@@ -50,7 +44,9 @@
           <td class="text-center">
             <a href="<?php echo base_url('admin/provinsi/edit/'.$provinsi->id_provinsi)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/provinsi/delete/'.$provinsi->id_provinsi)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+            <!-- <a href="<?php echo base_url('admin/provinsi/delete/'.$provinsi->id_provinsi)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
+
+            <a href="<?php echo base_url('admin/provinsi/delete/'.$provinsi->id_provinsi)?>" class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> 
           </td>
         </tr>
       <?php }?>
