@@ -15,16 +15,20 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+
+                   <!-- Perintah menampilkan sweet alert -->
+                    <div class="flash" data-flash="<?= $this->session->flashdata('sukses');?>">
+
                     <h4 class="card-title"><?php echo $title ?></h4>
 
-                    <?php
+                    <!-- <?php
                     //Notifikasi
-                    if($this->session->flashdata('sukses')) {
-                      echo '<div class="alert alert-success">';
-                      echo $this->session->flashdata('sukses');
-                      echo '</div>';
-                    }
-                    ?>
+                    // if($this->session->flashdata('sukses')) {
+                    //   echo '<div class="alert alert-success">';
+                    //   echo $this->session->flashdata('sukses');
+                    //   echo '</div>';
+                    // }
+                    ?> -->
 
                     <div class="row">
                         <div>
@@ -58,7 +62,7 @@
             <a href="<?php echo base_url('admin/berita/edit/'.$berita->id_berita)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/berita/delete/'.$berita->id_berita)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+            <a href="<?php echo base_url('admin/berita/delete/'.$berita->id_berita)?>"class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
 
            
           </td>

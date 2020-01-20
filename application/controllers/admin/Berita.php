@@ -30,9 +30,10 @@ class Berita extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('judul_berita', 'Judul Berita', 'required|max_length[70]', 
+		$valid->set_rules('judul_berita', 'Judul Berita', 'required|max_length[70]',
 				array('required'   => '%s harus diisi',
 					  'max_length'=> 'Maksimal judul berita 70 karakter.',));
+		
 		$valid->set_rules('isi', 'Isi Berita', 'required', 
 				array('required'    => '%s harus diisi'));
 		

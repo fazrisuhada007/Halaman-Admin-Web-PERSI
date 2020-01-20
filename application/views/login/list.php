@@ -33,7 +33,7 @@
 
                 <?php
                   // //NOTIFIKASI ERROR
-                  echo validation_errors('<div class="alert alert-success">','</div>');
+                  echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
                   //NOTIFIKASI GAGAL LOGIN
                   if($this->session->flashdata('warning')) {
@@ -57,7 +57,7 @@
                     <input type="text" name="email" id="email" class="form-control form-control-lg"  placeholder="Email" value="<?php echo set_value('email')?>">
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" id="email" class="form-control form-control-lg"  placeholder="Password">
+                    <input type="password" name="password" id="password" class="form-control form-control-lg"  placeholder="Password">
                   </div>
                   <div class="mt-3">
                     <button style="background: none;background-color: #66BB6A;" type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
