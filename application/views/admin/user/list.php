@@ -15,16 +15,20 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+
+                  <!-- Perintah menampilkan sweet alert -->
+                    <div class="flash" data-flash="<?= $this->session->flashdata('sukses');?>">
+                      
                     <h4 class="card-title"><?php echo $title ?></h4>
 
-                    <?php
+                    <!-- <?php 
                     //Notifikasi
-                    if($this->session->flashdata('sukses')) {
-                      echo '<div class="alert alert-success">';
-                      echo $this->session->flashdata('sukses');
-                      echo '</div>';
-                    }
-                    ?>
+                    // if($this->session->flashdata('sukses')) {
+                    //   echo '<div class="alert alert-success">';
+                    //   echo $this->session->flashdata('sukses');
+                    //   echo '</div>';
+                    // }
+                    ?>-->
                     
                     <div class="row">
                         <div>
@@ -33,11 +37,11 @@
                       </a>
                         </div>
                     </div>
-                   <table align="center" id="example" class="table table-striped table-bordered" style="overflow: auto; width:auto; display:block!important;">
+                  <table align="center" id="example" class="table table-striped table-bordered" style="overflow: auto; width:auto; display:block!important;">
+                  <!-- <table align="center" id="example" class="table table-striped table-bordered"> -->
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Anggota</th>
                           <th>Nama Rumah sakit</th>
                           <th>Telepon</th>
                           <th>Alamat Rumah Sakit</th>
@@ -53,9 +57,8 @@
           <!-- <td>
             <img src="<?php echo base_url('asset/upload/image/thumbs/'.$user->photo) ?>" style="width:30%; height:30%;" class="rounded"/>
           </td> -->
-          <td><?php echo $user->nama_lengkap ?></td>
           <td><?php echo $user->nama_rumah_sakit ?></td>
-          <td><?php echo $user->telp ?></td>
+          <td><?php echo $user->telp_rumah_sakit ?></td>
           <td><?php echo $user->alamat_rumah_sakit ?></td>
           <td><?php echo $user->nama_provinsi ?></td>
          <!--  <td>
@@ -72,7 +75,7 @@
             <a href="<?php echo base_url('admin/user/edit/'.$user->id_rumah_sakit)?>"><i class="mdi mdi-pencil-box-outline btn-icon-append"></i></a> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="<?php echo base_url('admin/user/delete/'.$user->id_rumah_sakit)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
+            <a href="<?php echo base_url('admin/user/delete/'.$user->id_rumah_sakit)?>"class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a>
 
            
           </td>
@@ -84,7 +87,12 @@
                 </div>
               </div>
             </div>
- <script> $(document).ready( function () {
+<!--  <script> $(document).ready( function () {
     $('#myTable').DataTable();
-} );</script>
-   
+} );</script> -->
+<script type="text/javascript">
+  $('#myTable').DataTable( {
+    responsive: true;
+    width :20%
+} );
+</script>

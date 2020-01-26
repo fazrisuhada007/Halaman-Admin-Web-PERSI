@@ -9,27 +9,29 @@ class Simple_login
 	{
         $this->CI =& get_instance();
         //Load data model user
-        $this->CI->load->model('user_model');
+        $this->CI->load->model('admin_model');
 	}
 
 	//Fungsi Login
 	public function login($email,$password)
 	{
-		$check = $this->CI->user_model->login($email,$password);
+		$check = $this->CI->admin_model->login($email,$password);
 		//Jika ada data user, maka create session login
 		if($check) {
-			$id_user 	    = $check->id_user;
-			$id_rumah_sakit	= $check->id_rumah_sakit;
+			$id_admin 	    = $check->id_admin;
+			$nama       	= $check->nama;
+			$username	    = $check->username;
+			$telp           = $check->telp;
 			$email		    = $check->email;
-			$nama_lengkap   = $check->nama_lengkap;
-			$level		    = $check->level;
+			$status		    = $check->status;
 			$photo		    = $check->photo;
 			//Craete session
-			$this->CI->session->set_userdata('id_user', $id_user);
-			$this->CI->session->set_userdata('id_rumah_sakit', $id_rumah_sakit);
+			$this->CI->session->set_userdata('id_admin', $id_admin);
+			$this->CI->session->set_userdata('nama', $nama);
+			$this->CI->session->set_userdata('username', $username);
+			$this->CI->session->set_userdata('telp', $telp);
 			$this->CI->session->set_userdata('email', $email);
-			$this->CI->session->set_userdata('nama_lengkap', $nama_lengkap);
-			$this->CI->session->set_userdata('level', $level);
+			$this->CI->session->set_userdata('status', $status);
 			$this->CI->session->set_userdata('photo', $photo);
 			//redirect ke halaman admin yang telah diproteksi
 			redirect(base_url('admin/dashboard'),'refresh');
@@ -54,11 +56,12 @@ class Simple_login
 	public function logout()
 	{
 		//MEMBUANG SEMUA SESSION YANG TELAH DI SET SAAT LOGIN
-		$this->CI->session->unset_userdata('id_user');
-		$this->CI->session->unset_userdata('id_rumah_sakit');
+		$this->CI->session->unset_userdata('id_admin');
+		$this->CI->session->unset_userdata('nama');
+		$this->CI->session->unset_userdata('username');
+		$this->CI->session->unset_userdata('telp');
 		$this->CI->session->unset_userdata('email');
-		$this->CI->session->unset_userdata('nama_lengkap');
-		$this->CI->session->unset_userdata('level');
+		$this->CI->session->unset_userdata('status');
 		$this->CI->session->unset_userdata('photo');
 		//SETELAH SESSION DIBUANG DI REDIRECT KE HALAMAN LOGIN
 		$this->CI->session->set_flashdata('sukses','Anda berhasil logout.');

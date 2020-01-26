@@ -1,57 +1,106 @@
- <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row" id="proBanner">
-              <div class="col-12">
-              </div>
-            </div>
-            <div class="page-header">
-              <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-success text-white mr-2" style="background: none;background-color: #66BB6A;">
-                  <i class="mdi mdi-home"></i>
-                </span> Dashboard Admin </h3>
-              <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row" id="proBanner">
+      <div class="col-12">
+      </div>
+    </div>
+    <div class="page-header">
+      <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-success text-white mr-2" style="background: none;background-color: #66BB6A;">
+          <i class="mdi mdi-home"></i>
+        </span> Dashboard Admin </h3>
+      <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">
+            <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
             <div class="row">
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="<?php echo base_url() ?>asset/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Anggota<i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">$ 15,0000</h2>
-                    <h6 class="card-text">Increased by 60%</h6>
+              <div class="col-lg-4">
+                <div class="border-bottom text-center pb-4">
+                  <img src="<?php echo base_url('asset/upload/image/'.$this->session->userdata('photo')) ?>" alt="profile" class="img-lg rounded-circle mb-3" />   
+                </div>
+                <div class="py-4">
+                  <p class="clearfix">
+                    <span class="float-left"> Status </span>
+                    <span class="float-right text-muted"> Active </span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left"> Phone </span>
+                    <span class="float-right text-muted"><?php echo $this->session->userdata('telp') ?></span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left"> Mail </span>
+                    <span class="float-right text-muted"><?php echo $this->session->userdata('email') ?></span>
+                  </p> 
+                </div>
+               <!--  <button class="btn btn-gradient-primary btn-block" style="background: none;background-color: #66BB6A;">Edit</button> -->
+              </div>
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h3><?php echo $this->session->userdata('nama') ?></h3>
+                    <div class="d-flex align-items-center">
+                      <h5 class="mb-0 mr-2 text-muted">
+                          <?php echo $this->session->userdata('status') ?>
+                      </h5>
+                    </div>
+                  </div>
+                  <div>
+                    <!-- <button class="btn btn-outline-secondary btn-icon">
+                    </button>
+                    <button class="btn btn-gradient-primary">Request</button> -->
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-info card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="<?php echo base_url() ?>asset/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">45,6334</h2>
-                    <h6 class="card-text">Decreased by 10%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-success card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="<?php echo base_url() ?>asset/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Visitors Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">95,5741</h2>
-                    <h6 class="card-text">Increased by 5%</h6>
-                  </div>
+                <div class="mt-4 py-2 border-top border-bottom">
+                  <ul class="nav profile-navbar">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        <i class="mdi mdi-account-outline"></i> Personal Detail </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">
+                        <i class="mdi mdi-settings "></i> Settings </a>
+                    </li>
+                  </ul>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" value="<?php echo $this->session->userdata('nama') ?>"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" value="<?php echo $this->session->userdata('username') ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="telp" value="<?php echo $this->session->userdata('telp') ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="email" value="<?php echo $this->session->userdata('email') ?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Ganti Photo</label>
+                      <input type="file" name="photo" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo User">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-gradient-primary" type="button" style="background: none;background-color: #00acee;">Upload</button>
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                    </button>
+                    <button class="btn btn-gradient-primary"  style="background: none;background-color: #66BB6A;">Edit Data</button>
+                    </div>
                 </div>
               </div>
             </div>
-       
-          <!-- content-wrapper ends -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -24,7 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		// join tabel user dengan provinsi
 		public function listing()
 		{
-			$this->db->select('user.* ,provinsi.nama_provinsi, anggota_rumah_sakit.nama_rumah_sakit, anggota_rumah_sakit.alamat_rumah_sakit');
+			$this->db->select('user.* ,provinsi.nama_provinsi, anggota_rumah_sakit.nama_rumah_sakit, anggota_rumah_sakit.alamat_rumah_sakit,
+				anggota_rumah_sakit.telp_rumah_sakit');
 
 			$this->db->from('user');
 			//Join

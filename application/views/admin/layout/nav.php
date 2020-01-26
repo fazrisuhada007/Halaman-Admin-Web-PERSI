@@ -11,22 +11,15 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2"><?php echo $this->session->userdata('nama_lengkap') ?></span>
+                  <span class="font-weight-bold mb-2"><?php echo $this->session->userdata('nama') ?></span>
                   <span class="text-secondary text-small">
-                   <?php
-                    if($this->session->userdata('level') == '1'){
-                      echo 'Admin';
-                    }elseif($this->session->userdata('level') == '2'){ 
-                      echo 'User';
-                    }
-                    ?>  
+                  <?php echo $this->session->userdata('status') ?>
                   </span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
            <!-- Halaman Admin -->
-            <?php if($this->session->userdata('level') == 1) { ?>
                   <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('admin/dashboard')?>">
                       <span class="menu-title">Dashboard</span>
@@ -100,43 +93,7 @@
                       <i class="mdi mdi-city menu-icon"></i>
                     </a>
                   </li>
-            <?php }elseif($this->session->userdata('level') == 2) { ?>
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('user/forum')?>">
-                      <span class="menu-title">Forum</span>
-                      <i class="mdi mdi-forum menu-icon"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('user/Fasilitas')?>">
-                      <span class="menu-title">Fasilitas</span>
-                      <i class="mdi mdi-ambulance menu-icon"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('user/Pelayanan_medis')?>">
-                      <span class="menu-title">Pelayanan Medis</span>
-                      <i class="mdi mdi-needle  menu-icon"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('user/Pelayanan_penunjang')?>">
-                      <span class="menu-title">Pelayanan Penunjang</span>
-                      <i class="mdi mdi-monitor menu-icon"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('user/Provinsi')?>">
-                      <span class="menu-title">Provinsi</span>
-                      <i class="mdi mdi-castle menu-icon"></i>
-                    </a>
-                  </li>
-             <?php } ?>
           </ul>
         </nav>
         <!-- partial -->

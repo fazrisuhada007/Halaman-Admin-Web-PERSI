@@ -14,7 +14,9 @@
                         echo '</div>';
                       }
                       //NOTIFIKASI
-                      echo validation_errors('<div class="alert alert-warning">','</div>');
+                        echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Peringatan!</strong> ','</div>');
                     ?><br>
                     <form method="POST" action="<?php base_url('admin/berita/edit')?>" enctype="multipart/form-data">
                       <div class="form-group">

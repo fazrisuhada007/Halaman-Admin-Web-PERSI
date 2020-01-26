@@ -31,6 +31,9 @@
     <!-- Custom js for this page -->
     <script src="<?php echo base_url() ?>asset/assets/js/dashboard.js"></script>
     <script src="<?php echo base_url() ?>asset/assets/js/todolist.js"></script>
+    <!-- file upload -->
+    <script src="<?php echo base_url() ?>asset/assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
     <!-- End custom js for this page -->
     <!-- Data tabel -->
    
@@ -51,7 +54,7 @@
               Swal.fire({
               position: 'center',
               icon    : 'success',
-              title   : 'sukses diproses',
+              title   : '',
               showConfirmButton: false,
               timer: 1500
             })

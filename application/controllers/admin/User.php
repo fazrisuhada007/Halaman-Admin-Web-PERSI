@@ -35,32 +35,35 @@ class User extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_lengkap', 'Nama Lengkap', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_lengkap', 'Nama User', 'required|max_length[15]',
+				array('required' => '%s harus diisi.',
+					  'max_length' => 'Maksimal nama user 15 karakter.'));
 
-		$valid->set_rules('email', 'Email', 'required|valid_email',
-				array('required' 	=> '%s harus diisi',
-					  'valid_email'	=> '%s tidak valid'));
+		$valid->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]',
+				array('required' 	=> '%s harus diisi.',
+					  'valid_email'	=> '%s tidak valid.',
+					   'is_unique'  => '%s sudah terdaftar, ganti email lain.'));
 
 		$valid->set_rules('password', 'Password', 'required',
 				array('required ' => '%s harus diisi'));
 
-		$valid->set_rules('telp', 'No telphon', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('telp', 'Nomor telphon', 'required|is_unique[user.telp]', 
+				array('required' => '%s harus diisi.',
+					  'is_unique'  => '%s sudah terdaftar, inputkan no nomor telepon lain.',));
 
 		$valid->set_rules('nama_rumah_sakit', 'Nama Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+				array('required' => '%s harus diisi.'));
 
 		$valid->set_rules('alamat_rumah_sakit', 'Alamat Rumah Sakit', 'required', 
 				array('required' => '%s harus diisi'));
 
-		$valid->set_rules('telp_rumah_sakit', 'Telphon Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('telp_rumah_sakit', 'Telpon Rumah Sakit', 'required|is_unique[anggota_rumah_sakit.telp_rumah_sakit]', 
+				array('required' => '%s harus diisi.',
+				      'is_unique'  => '%s sudah terdaftar, inputkan no nomor telepon lain.',));
 
-		$valid->set_rules('status_buka', 'Status Buka Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('id_provinsi', 'Provinsi', 'required', 
+				array('required' => '%s harus diisi.'));
 
-		
 		if($valid->run()) {
 			$config['upload_path']   = './asset/upload/image/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -74,7 +77,7 @@ class User extends CI_Controller
 			// if ( ! $this->upload->do_upload('photo_rumah_sakit')) {
 		//End validasi
 
-		$data = array ('title'	       => 'Tambah User',
+		$data = array ('title'	       => 'Tambah Anggota',
 					   'provinsi'      => $provinsi,
 					   'error'         => $this->upload->display_errors(),
 					   'isi'           => 'admin/user/tambah'
@@ -108,14 +111,14 @@ class User extends CI_Controller
 			$data = array(
 			  	  'id_user'        => $i->post('id_user'),
 			  	  'id_rumah_sakit' => $i->post('id_rumah_sakit'),
-			      'nama_lengkap'=> $i->post('nama_lengkap'),
-			      'email'		=> $i->post('email'),
-			      'password'	=> MD5($i->post('password')),
-			      'telp'		=> $i->post('telp'),
-			      'level'		=> $i->post('level'),
-			      'id_provinsi' => $i->post('id_provinsi'),
+			      'nama_lengkap'   => $i->post('nama_lengkap'),
+			      'email'		   => $i->post('email'),
+			      'password'	   => MD5($i->post('password')),
+			      'telp'		   => $i->post('telp'),
+			      'level'		   => $i->post('level'),
+			      'id_provinsi'    => $i->post('id_provinsi'),
 			      // nama file photo
-			      'photo'	    => $upload_photo['upload_data']['file_name'],
+			      'photo'	       => $upload_photo['upload_data']['file_name'],
 			      );
 			$data2 = array(			      
 			      'id_rumah_sakit'	    => $i->post('id_rumah_sakit'),
@@ -129,12 +132,12 @@ class User extends CI_Controller
 			if ($tambah_anggota_rumah_sakit) {
 				$data['id_rumah_sakit'] = $this->db->insert_id();
 				$tambah_user= $this->user_model->tambah_user($data);
-				$this->session->set_flashdata('suskes','Data berhasil ditambahkan.');
+				$this->session->set_flashdata('sukses','Data berhasil ditambahkan.');
 		        redirect(base_url('admin/user'),'refresh');
 			}
 		}}
 		// END MASUK DATABASE
-		$data = array ('title'	  => 'Tambah User',
+		$data = array ('title'	  => 'Tambah Anggota',
 					   'provinsi' => $provinsi,
 					   'isi'	  => 'admin/user/tambah'
 					  );
@@ -154,27 +157,31 @@ class User extends CI_Controller
 		//VALIDASI edit
 		$valid = $this->form_validation;
 
-		$valid->set_rules('nama_lengkap', 'Nama Lengkap', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('nama_lengkap', 'Nama User', 'required|max_length[15]',
+				array('required' => '%s harus diisi.',
+					  'max_length' => 'Maksimal nama user 15 karakter.'));
 
 		$valid->set_rules('email', 'Email', 'required|valid_email',
-				array('required' 	=> '%s harus diisi',
-					  'valid_email'	=> '%s tidak valid'));
+				array('required' 	=> '%s harus diisi.',
+					  'valid_email'	=> '%s tidak valid.',
+					   ));
 
-		$valid->set_rules('telp', 'No telphon', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('telp', 'Nomor telphon', 'required', 
+				array('required' => '%s harus diisi.',
+					  ));
 
 		$valid->set_rules('nama_rumah_sakit', 'Nama Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+				array('required' => '%s harus diisi.'));
 
 		$valid->set_rules('alamat_rumah_sakit', 'Alamat Rumah Sakit', 'required', 
 				array('required' => '%s harus diisi'));
 
-		$valid->set_rules('telp_rumah_sakit', 'Telphon Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('telp_rumah_sakit', 'Telpon Rumah Sakit', 'required', 
+				array('required' => '%s harus diisi.',
+				      ));
 
-		$valid->set_rules('status_buka', 'Status Buka Rumah Sakit', 'required', 
-				array('required' => '%s harus diisi'));
+		$valid->set_rules('id_provinsi', 'Provinsi', 'required', 
+				array('required' => '%s harus diisi.'));
 
 		if($valid->run()) {
 			// Check jika photo diganti
@@ -191,7 +198,7 @@ class User extends CI_Controller
 			if ( ! $this->upload->do_upload('photo')){	
 		//End validasi
 
-		$data = array ('title'	  => 'Edit User',
+		$data = array ('title'	  => 'Edit Anggota',
 					   'user'	  => $user,
 					   'provinsi' => $provinsi,
 					   'anggota_rumah_sakit' => $anggota_rumah_sakit,
@@ -246,7 +253,7 @@ class User extends CI_Controller
 				// $data2['id_user'] = $this->db->insert_id();
 				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_user);
 			}
-			$this->session->set_flashdata('suskes','Data berhasil diedit.');
+			$this->session->set_flashdata('sukses','Data berhasil diedit.');
 			redirect(base_url('admin/user'),'refresh');
 		}} else {
 			//Edit user tanpa ganti photo
@@ -277,11 +284,11 @@ class User extends CI_Controller
 				// $data2['id_rumah_sakit'] = $this->db->insert_id();
 				$edit_anggota_rumah_sakit= $this->user_model->edit_anggota_rumah_sakit($data2,$id_rumah_sakit);
 			}
-			$this->session->set_flashdata('suskes','Data berhasil diedit.');
+			$this->session->set_flashdata('sukses','Data berhasil diedit.');
 			redirect(base_url('admin/user'),'refresh');
 		}}
 		// END MASUK DATABASE
-		$data = array ('title'	    => 'Edit User',
+		$data = array ('title'	    => 'Edit Anggota',
 					   'user'       => $user,
 					   'provinsi'	=> $provinsi,
 					   'anggota_rumah_sakit'	=> $anggota_rumah_sakit,

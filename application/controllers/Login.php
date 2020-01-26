@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 		}
 		//END VALIDASI
 
-		$data   = array('title'   => 'Login Administrator');
+		$data   = array('title'   => 'Dashboard Login');
 		$this->load->view('login/list', $data);
 	}
 
