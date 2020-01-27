@@ -25,11 +25,11 @@
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
-                <div class="brand-logo" style="width:auto; text-align:left;" >
-                  <img src="<?php echo base_url() ?>asset/assets/images/logo_login.svg" style="width:80%;">
+                <div class="brand-logo" style="width:auto; text-align:center;" >
+                  <img src="<?php echo base_url() ?>asset/assets/images/logo_login.png" style="width:80%;">
                 </div>
-                <h4> <?php echo $title ?> </h4>
-                <h6 class="font-weight-light"> Masuk untuk melanjutkan. </h6>
+                <center><h4> <?php echo $title ?> </h4></center>
+              <br>
 
                 <?php
                   // //NOTIFIKASI ERROR
