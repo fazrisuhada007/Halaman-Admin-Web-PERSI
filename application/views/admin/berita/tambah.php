@@ -30,10 +30,14 @@
                       </div>
 
                       <div class="form-group">
-                        <label>Upload Photo</label><br>
-                        <input type="file" name="photo"  value="<?php echo set_value('photo')?>">
+                        <input type="file" name="photo" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button" style="background: none;background-color: #00acee;">Upload</button>
+                          </span>
+                        </div>
                       </div>
-
                       <!-- <div class="form-group">
                         <label>File upload</label>
                         <input type="file" name="img[]" class="file-upload-default">

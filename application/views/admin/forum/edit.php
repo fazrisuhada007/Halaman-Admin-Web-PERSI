@@ -39,8 +39,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label>Upload Photo</label><br>
-                        <input type="file" name="photo_forum">
+                        <input type="file" name="photo_forum" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button" style="background: none;background-color: #00acee;">Upload</button>
+                          </span>
+                        </div>
                       </div>
 
                       <button type="submit" name="submit" class="btn btn-gradient-primary mr-2"  style="background: none;background-color: #00acee;">

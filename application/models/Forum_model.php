@@ -13,13 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function listing()
 		{
 			$this->db->select('forum.*, 
-						   anggota_rumah_sakit.nama_rumah_sakit,
 						   kompartemen.nama_kompartemen');
 			$this->db->from('forum');
 			//Join
 			$this->db->join('kompartemen', 'kompartemen.id_kompartemen = forum.id_kompartemen', 'left');
-			//Join
-			$this->db->join('anggota_rumah_sakit', 'anggota_rumah_sakit.id_rumah_sakit = forum.id_rumah_sakit', 'left');
 			//End join
 			$this->db->order_by('id_kompartemen', 'desc');
 			$query = $this->db->get();

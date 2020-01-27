@@ -36,14 +36,12 @@ class Forum extends CI_Controller
 		//VALIDASI INPUT
 		$valid = $this->form_validation;
 
-		// $valid->set_rules('id_kompartemen', 'Kompartemen', 'required', 
-		// 		array('required' => '%s harus diisi'));
-
-		$valid->set_rules('judul_forum', 'Judul Forum', 'required',
-				array('required ' => '%s harus diisi'));
-
+		$valid->set_rules('judul_forum', 'Judul Forum', 'required|max_length[70]',
+				array('required'   => '%s harus diisi',
+					  'max_length'=> 'Maksimal judul forum 70 karakter.',));
+		
 		$valid->set_rules('deskripsi', 'Deskripsi', 'required', 
-				array('required' => '%s harus diisi'));
+				array('required'    => '%s harus diisi'));
 		
 		if($valid->run()) {
 			$config['upload_path']   = './asset/upload/image/';
@@ -88,7 +86,7 @@ class Forum extends CI_Controller
 			// Input data ke dalam 2 tabel
 			$data = array(
 				  'id_forum'	   => $i->post('id_forum'),
-			  	  'id_rumah_sakit' => $this->session->userdata('id_rumah_sakit'),
+			  	  'id_admin' => $this->session->userdata('id_admin'),
 			      'id_kompartemen' => $i->post('id_kompartemen'),
 			      'judul_forum'	   => $i->post('judul_forum'),
 			      // nama file photo
@@ -97,7 +95,7 @@ class Forum extends CI_Controller
 			      'tanggal_update' => date('Y-m-d H:i:s')
 			      );
 			$this->forum_model->tambah($data);
-			$this->session->set_flashdata('suskes','Data telah diedit');
+			$this->session->set_flashdata('sukses','Data telah diedit');
 			redirect(base_url('admin/forum'),'refresh');
 		}}
 		// END MASUK DATABASE
@@ -173,7 +171,7 @@ class Forum extends CI_Controller
 			$i = $this->input;
 			$data = array(
 			  'id_forum'        => $id_forum,
-		      // 'id_rumah_sakit'  => $i->post('id_rumah_sakit'),
+		      // 'id_admin'  => $i->post('id_admin'),
 		      'id_kompartemen'	=> $i->post('id_kompartemen'),
 		      'judul_forum'	    => $i->post('judul_forum'),
 		      //Disimpan nama file photo
@@ -182,14 +180,14 @@ class Forum extends CI_Controller
 		      'tanggal_update'  => date('Y-m-d H:i:s')
 			      );
 			$this->forum_model->edit($data);
-			$this->session->set_flashdata('suskes','Data telah diedit');
+			$this->session->set_flashdata('sukses','Data telah diedit');
 			redirect(base_url('admin/forum'),'refresh');
 		}} else {
 			//Edit forum tanpa ganti photo
 			$i = $this->input;
 			$data = array(
 			  'id_forum'        => $id_forum,
-		      // 'id_rumah_sakit'  => $i->post('id_rumah_sakit'),
+		      // 'id_admin'  => $i->post('id_admin'),
 		      'id_kompartemen'	=> $i->post('id_kompartemen'),
 		      'judul_forum'	    => $i->post('judul_forum'),
 		      //Disimpan nama file photo
@@ -220,7 +218,7 @@ class Forum extends CI_Controller
 			//End proses hapus
 			$data = array('id_forum' => $id_forum);
 			$this->forum_model->delete($data);
-			$this->session->set_flashdata('Sukses, Data telah dihapus');
+			$this->session->set_flashdata('sukses, Data telah dihapus');
 			redirect(base_url('admin/forum'),'refresh');
 		} 
 

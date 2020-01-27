@@ -24,8 +24,7 @@
                 <div class="row">
                   <div>
                     <a class="nav-link">
-                      <button type="button" id="btn-delete" class="btn btn-gradient-primary mr-1" style="background: none;background-color: #00acee;"><i class="mdi mdi-delete btn-icon-append"></i>Delete
-                      </button>
+                      <button type="button" id="btn-delete" class="btn btn-gradient-primary mr-1" style="background: none;background-color: #00acee;">Delete</button>
                     </a>
                     </div>
                 </div>

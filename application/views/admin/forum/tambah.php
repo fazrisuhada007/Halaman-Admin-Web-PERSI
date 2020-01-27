@@ -6,10 +6,18 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $title ?></h4>
-                    <?php
-                    //NOTIFIKASI
-                    echo validation_errors('<div class="alert alert-warning col-md-5">','</div>');
-                    ?>
+                   <?php
+                      //Error upload
+                      if(isset($error)) {
+                        echo '<div class="alert alert-warning">';
+                        echo 'File photo terlalu besar.';
+                        echo '</div>';
+                      }
+                      //NOTIFIKASI
+                      echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Peringatan!</strong> ','</div>');
+                    ?><br>
                     <form method="POST" action="<?php base_url('admin/forum/tambah')?>" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Kompartemen</label>
@@ -33,8 +41,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label>Upload Photo</label><br>
-                        <input type="file" name="photo_forum" required="required">
+                        <input type="file" name="photo_forum" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Photo">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button" style="background: none;background-color: #00acee;">Upload</button>
+                          </span>
+                        </div>
                       </div>
 
                       <button type="submit" name="submit" class="btn btn-gradient-primary mr-2"  style="background: none;background-color: #00acee;">

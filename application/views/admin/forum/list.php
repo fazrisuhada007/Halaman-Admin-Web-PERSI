@@ -12,6 +12,7 @@
     /* color: #66BB6A; */
 }   
 </style>
+
  <div class="main-panel">
     <div class="content-wrapper">
       <div class="row">
@@ -27,11 +28,10 @@
                   </a>
                     </div>
                 </div>
-                <table align="center" id="example" class="table table-striped table-bordered" style="overflow: auto; width:auto; display:block!important;">
+                <table align="center" id="example" class="table table-striped table-bordered">  <!-- style="overflow: auto; width:auto; display:block!important;"-->
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Rumah sakit</th>
                       <th>Kompartemen</th>
                       <th>Judul Forum</th>
                       <th>Aksi</th>
@@ -41,7 +41,6 @@
                     <?php $no=1; foreach ($forum as $forum) { ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $forum->nama_rumah_sakit ?></td>
                         <td><?php echo $forum->nama_kompartemen ?></td>
                         <td><?php echo $forum->judul_forum ?></td>
                         <td class="text-center">
@@ -53,7 +52,7 @@
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                           <a href="<?php echo base_url('admin/forum/delete/'.$forum->id_forum)?>"onclick="return confirm('Hapus Data ini?')"><i class="mdi mdi-delete btn-icon-append"></i></a>
-
+                         <!--  <a href="<?php echo base_url('admin/forum/delete/'.$forum->id_forum)?>"class="tombol-hapus"><i class="mdi mdi mdi-delete btn-icon-append"></i></a> -->
                         </td>
                   </tr>
                 <?php }?>
