@@ -11,7 +11,7 @@ class Berita extends CI_Controller
 		$this->simple_login->cek_login();
 	}
 
-	// DATA USER
+	// DATA berita
 	public function index()
 	{
 		$berita = $this->berita_model->listing();

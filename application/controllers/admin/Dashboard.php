@@ -22,6 +22,48 @@ class Dashboard extends CI_Controller {
 		
 	}
 
+	//Halaman utama/dashboard
+	public function setting()
+	{
+		$data = array( 'title'		=> 'Halaman Administrator',
+					   'isi'		=> 'admin/dashboard/setting'
+					 );
+		$this->load->view('admin/layout/wrapper', $data);
+		
+	}
+
+	// Simpan Profil
+	public function simpan(){
+		$data = [
+			'nama'	=> $this->input->post('nama'),
+			'telp'	=> $this->input->post('telp'),
+			'alamat'	=> $this->input->post('alamat'),
+			// 'photo'	=> $this->input->post('photo'),
+		];
+		$this->session->set_userdata('nama', $this->input->post('nama'));
+		$this->session->set_userdata('telp', $this->input->post('telp'));
+		$this->session->set_userdata('alamat', $this->input->post('alamat'));
+		// $this->session->set_userdata('photo', $this->input->post('photo'));
+		$this->db->where('id_admin', $this->session->userdata('id_user'));
+		$this->db->update('admin',$data);
+
+		echo json_encode($data);
+	}
+
+	// Simpan pasword
+	public function simpan2(){
+		$data = [
+			'email'	    => $this->input->post('email'),
+			'password'	=> MD5($this->input->post('password')),
+		];
+		$this->session->set_userdata('email', $this->input->post('email'));
+		// $this->session->set_userdata('photo', $this->input->post('photo'));
+		$this->db->where('id_admin', $this->session->userdata('id_user'));
+		$this->db->update('admin',$data);
+
+		echo json_encode($data);
+	}
+
 }
 
 /* End of file Dashboard.php */

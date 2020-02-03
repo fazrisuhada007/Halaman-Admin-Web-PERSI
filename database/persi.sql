@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Jan 2020 pada 07.05
+-- Generation Time: 03 Feb 2020 pada 10.07
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -35,6 +35,7 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL,
   `telp` varchar(70) NOT NULL,
   `email` varchar(70) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
   `status` varchar(70) NOT NULL,
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,8 +44,8 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`, `telp`, `email`, `status`, `photo`) VALUES
-(1, 'Rahmat Rizki', 'Admin Persi', '21232f297a57a5a743894a0e4a801fc3', '0822-7222-2290', 'admin@gmail.com', 'Admin', 'face1.jpg');
+INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`, `telp`, `email`, `alamat`, `status`, `photo`) VALUES
+(1, 'Rahmat Rizki', 'Admin Persi', '21232f297a57a5a743894a0e4a801fc3', '0822-7222-2290', 'admin@gmail.com', 'Bukittinggi', 'Admin', 'face1.jpg');
 
 -- --------------------------------------------------------
 
@@ -444,7 +445,7 @@ ALTER TABLE `forum`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `kompartemen`
 --

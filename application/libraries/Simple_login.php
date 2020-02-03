@@ -23,6 +23,7 @@ class Simple_login
 			$username	    = $check->username;
 			$telp           = $check->telp;
 			$email		    = $check->email;
+			$alamat		    = $check->alamat;
 			$status		    = $check->status;
 			$photo		    = $check->photo;
 			//Craete session
@@ -31,6 +32,7 @@ class Simple_login
 			$this->CI->session->set_userdata('username', $username);
 			$this->CI->session->set_userdata('telp', $telp);
 			$this->CI->session->set_userdata('email', $email);
+			$this->CI->session->set_userdata('alamat', $alamat);
 			$this->CI->session->set_userdata('status', $status);
 			$this->CI->session->set_userdata('photo', $photo);
 			//redirect ke halaman admin yang telah diproteksi
@@ -61,6 +63,7 @@ class Simple_login
 		$this->CI->session->unset_userdata('username');
 		$this->CI->session->unset_userdata('telp');
 		$this->CI->session->unset_userdata('email');
+		$this->CI->session->unset_userdata('alamat');
 		$this->CI->session->unset_userdata('status');
 		$this->CI->session->unset_userdata('photo');
 		//SETELAH SESSION DIBUANG DI REDIRECT KE HALAMAN LOGIN

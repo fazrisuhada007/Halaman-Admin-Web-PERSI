@@ -70,18 +70,15 @@
                         <i class="mdi mdi-account-outline"></i> Personal Detail </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="<?= base_url('admin/dashboard/setting') ?>">
+                      <a class="nav-link active" href="<?= base_url('admin/setting') ?>">
                         <i class="mdi mdi-settings "></i> Settings </a>
                     </li>
                   </ul>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap" value=""> 
+                        <input type="text" class="form-control" id="email" placeholder="Alamat Email" value=""> 
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="telp" placeholder="Nomor Telepon" value="">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="alamat" placeholder="Alamat Rumah" value="">
+                        <input type="password" class="form-control" id="password" placeholder="Password Baru" value="">
                     </div>
                    <!--  <div class="form-group">
                       <input type="file" name="photo" class="file-upload-default">
@@ -94,7 +91,7 @@
                     </div> -->
                     <div>
                     </button>
-                    <button class="btn btn-gradient-primary btn-edit-profil" onclick="simpanProfil()" style="background: none;background-color: #66BB6A;">Update Profil</button>
+                    <button class="btn btn-gradient-primary btn-edit-profil" onclick="simpanProfil2()" style="background: none;background-color: #66BB6A;">Ubah Password</button>
                     </div>
                 </div>
               </div>
@@ -105,15 +102,15 @@
     </div>
   </div>
  <script >
-    function simpanProfil(){
+    function simpanProfil2(){
       let data = {
-          nama : $('#nama').val(),
-          telp : $('#telp').val(),
-          alamat : $('#alamat').val(),
+          email : $('#email').val(),
+          password : $('#password').val(),
+          // alamat : $('#alamat').val(),
           // photo : $('#photo').val(),
       };
       $.ajax({
-        url : '<?= base_url();?>admin/Dashboard/simpan',
+        url : '<?= base_url();?>admin/Dashboard/simpan2',
         method  : 'POST',
         type    : 'ajax',
         dataType: 'JSON',
